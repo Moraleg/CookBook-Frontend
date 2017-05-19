@@ -5,7 +5,10 @@ app.controller('mainController', ['$http', function($http) {
 
   //backend server location
   this.url = 'http://localhost:3000';
-  this.user = {};//empty object for user
+  //empty object for user
+  this.user = {};
+
+
 
   //login function
   this.login = function(user) {
