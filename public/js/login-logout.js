@@ -1,11 +1,14 @@
 var app = angular.module('cookbook_app', []);
 
-app.controller('mainController', ['$http', function($http) {
+app.controller('loginController', ['$http', function($http) {
   // this.test = "mainController is working!";
 
   //backend server location
   this.url = 'http://localhost:3000';
-  this.user = {};//empty object for user
+  //empty object for user
+  this.user = {};
+
+
 
   //login function
   this.login = function(user) {
