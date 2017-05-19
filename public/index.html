@@ -10,6 +10,7 @@
 
     <!-- our js file(s) -->
     <script type="text/javascript" src="/js/login-logout.js"></script>
+    <script type="text/javascript" src="/js/recipes.js"></script>
     <!-- css -->
     <!-- cdn (skelton bootstrap whatever)-->
 
@@ -32,5 +33,8 @@
       <h1>{{user.username}}</h1>
     </div>
     <a href="#" ng-click="ctrl.logout()">Log Out</a>
+
+    <h1>Recipe Controller</h1>
+        {{ ctrl.message }}
   </body>
 </html>
