@@ -6,31 +6,99 @@
     <!-- javascript -->
     <!-- angular -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
+<<<<<<< HEAD
 
 
     <!-- our js file(s) -->
+=======
+    <!-- login/logout js file(s) -->
+>>>>>>> 3f3d8dcdeafc388463824223cd07c414a4eebea8
     <script type="text/javascript" src="/js/login-logout.js"></script>
     <!-- css -->
     <!-- cdn (skelton bootstrap whatever)-->
-
     <!-- our css file(s) -->
-    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
   </head>
   <body ng-controller= "mainController as ctrl">
+    <!-- HEADER -->
+    <header>
+      <h2 class="logo">HUNGRY FOR MORE</h2>
+      <nav>
+        <a href="#">ABOUT</a>
+        <a href="#">LOGIN</a>
+        <a href="#">SIGN UP</a>
+        <a href="#">RECIPE FEED</a>
+        <a href="#">EDIT ACCOUNT</a>
+        <a href="#" ng-click="ctrl.logout()">LOG OUT</a>
+      </nav>
+    </header>
+    <!--END HEADER-->
+
+    <!--MAIN PAGE-->
+    <div id="splash" ng-if="viewCtrl.currentView === 'splash'">
+     <section class="banner">
+       <h1 class="banner-h1">Find exciting activity ideas to get your kids moving.</h1>
+       <a href="#" ng-click="viewCtrl.changeView('activities')">BROWSE RECIPES</a>
+     </section>
+     <main class="main-content">
+       <section class="mid">
+         <p>BENEFIT</p>
+         <p>BENEFIT</p>
+         <p>BENEFIT</p>
+       </section>
+     </main>
+   </div>
+  <!--END MAIN PAGE-->
+
+  <!--CREATE ACCOUNT MODAL-->
+  <section id="signup-modal" class="modal">
+    <section class="modal-input-box">
+      <sign-up-form></sign-up-form>
+    </section>
+  </section>
+  <!--END CREATE ACCOUNT MODAL-->
+
+  <!--LOGIN MODAL-->
+ <section id="login-modal" class="modal">
+   <section class="modal-input-box">
+     <login-form></login-form>
+   </section>
+ </section>
+ <form ng-submit="ctrl.login(userPass)">
+   <input type="text" ng-model="userPass.username" placeholder="username"/>
+   <input type="password" ng-model="userPass.password" placeholder="password"/>
+   <input type="submit"/>
+ </form>
+ <p>Logged in username: {{ ctrl.user.username }} </p>
+
+ <h4 ng-click="ctrl.getUsers()">click to see users</h4>
+ <div>{{ctrl.error}}</div>
+ <div ng-repeat="user in ctrl.users">
+   <h1>{{user.username}}</h1>
+ </div>
+ <!--END LOGIN MODAL-->
+
+ <!-- CREATE RECIPE -->
+ <section class="modal">
+  <section class="modal-input-box">
+  </section>
+</section>
+  <!--END CREATE RECIPE -->
+
+  <!-- EDIT RECIPE -->
+  <section class="modal">
+   <section class="modal-input-box">
+   </section>
+ </section>
+   <!--EDITRECIPE -->
+
+  <!--USER EDIT/ DELETE MODAL-->
+  <section id="edit-user-modal" class="modal">
+   <section class="modal-input-box">
+   </section>
+ </section>
+ <!--END USER EDIT/DELETE MODAL-->
 
 
-    <form ng-submit="ctrl.login(userPass)">
-      <input type="text" ng-model="userPass.username" placeholder="username"/>
-      <input type="password" ng-model="userPass.password" placeholder="password"/>
-      <input type="submit"/>
-    </form>
-    <p>Logged in username: {{ ctrl.user.username }} </p>
-
-    <h4 ng-click="ctrl.getUsers()">click to see users</h4>
-    <div>{{ctrl.error}}</div>
-    <div ng-repeat="user in ctrl.users">
-      <h1>{{user.username}}</h1>
-    </div>
-    <a href="#" ng-click="ctrl.logout()">Log Out</a>
   </body>
 </html>
