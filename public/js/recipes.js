@@ -14,11 +14,20 @@ app.controller('mainController', ['$http', function($http) {
             console.log(this.notices);
     }.bind(this));
 
+
+
 // function to add recipes to the data base
     this.recipeForm = function() {
         console.log("recipeForm function ...");
         console.log('Recipe Form Data: ', this.formdata);
-    };
+        $http({
+            method: 'POST',
+            url: 'http://localhost:3000/recipes',
+            data:this.formdata
+        }).then(function (result) {console.log('Data from server: ', result);
+            this.formdata = {};
+        }.bind(this));
+    }; //end recipe form
 
 
 
