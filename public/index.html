@@ -1,16 +1,39 @@
 <!DOCTYPE html>
 <html ng-app="cookbook_app">
-    <head>
-        <meta charset="utf-8">
-        <title>Cookbook</title>
-        <!-- javascript -->
-        <!-- angular -->
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
+  <head>
+    <meta charset="utf-8">
+    <title>Cookbook</title>
+    <!-- javascript -->
+    <!-- angular -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
+    <!-- login/logout js file(s) -->
+    <script type="text/javascript" src="/js/login-logout.js"></script>
+    <script type="text/javascript" src="/js/recipes.js"></script>
+    <!-- css -->
+    <!-- cdn (skelton bootstrap whatever)-->
+    <!-- our css file(s) -->
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+  </head>
+  <!-- <body ng-controller= "mainController as ctrl"> -->
+    <!-- HEADER -->
+    <!-- <header>
+      <h2 class="logo">HUNGRY FOR MORE</h2>
+      <nav>
+        <a href="#">ABOUT</a>
+        <a href="#">LOGIN</a>
+        <a href="#">SIGN UP</a>
+        <a href="#">RECIPE FEED</a>
+        <a href="#">EDIT ACCOUNT</a>
+        <a href="#" ng-click="ctrl.logout()">LOG OUT</a>
+      </nav>
+    </header> -->
+    <!--END HEADER -->
+
 
 
 
         <!-- our recipes file(s) -->
-        <script type="text/javascript" src="/js/recipes.js"></script>
+        <!-- <script type="text/javascript" src="/js/recipes.js"></script> -->
 
         <!-- login/logout js file(s) -->
         <script type="text/javascript" src="/js/login-logout.js"></script>
@@ -99,9 +122,24 @@
             </section>
         </section>
         <!--END USER EDIT/DELETE MODAL-->
+        <!--START RECIPE-->
+        <nav ng-controller="MyController as ctrl">
+            <h1>Recipe Controller</h1>
+            {{ ctrl.message }}
 
-        <h1>Recipe Controller</h1>
-        {{ ctrl.message }}
+            <h4>Add a recipe</h4>
+
+            <form ng-submit="ctrl.recipeForm()">
+                <input type="text" ng-model="ctrl.formdata.title"placeholder="title"/>
+                <input type="text" ng-model="ctrl.formdata.ingredients"placeholder="ingredients"/>
+                <input type="text" ng-model="ctrl.formdata.ingredients"placeholder="ingredients"/>
+                <input type="text" ng-model="ctrl.formdata.directions"placeholder="directions"/>
+                <input type="text" ng-model="ctrl.formdata.servings"placeholder="servings"/>
+                <input type="text" ng-model="ctrl.formdata.img"placeholder="img"/>
+                <input type="submit" class="submit" value="Create Recipe">
+            </form>
+        </nav>
+
 
     </body>
 </html>
