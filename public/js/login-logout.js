@@ -8,6 +8,27 @@ app.controller('mainController', ['$http', function($http) {
 
 
 
+
+
+  this.createAccount = function(user) {
+    console.log(user);
+
+    $http({
+       method: 'POST',
+       url: this.url + '/users',
+       data: {
+         user: {
+          username: user.username,
+          password: user.password_digest
+          }
+       },
+     }).then(function(response) {//sucess
+       console.log(response);
+       this.user = response.data.user;
+     }.bind(this));
+  };
+
+
   //login function
   this.login = function(user) {
     console.log(user);
