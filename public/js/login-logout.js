@@ -9,7 +9,7 @@ app.controller('mainController', ['$http', function($http) {
 
 
 
-
+  //create a user
   this.createAccount = function(user) {
     console.log(user);
 
@@ -19,7 +19,7 @@ app.controller('mainController', ['$http', function($http) {
        data: {
          user: {
           username: user.username,
-          password: user.password_digest
+          password: user.password
           }
        },
      }).then(function(response) {//sucess
