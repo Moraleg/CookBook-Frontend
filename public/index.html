@@ -8,7 +8,7 @@
     <!-- angular -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
     <!-- loginlogout js file -->
-    <script type="text/javascript" src="/js/controllers/login-logout.js"></script>
+    <script type="text/javascript" src="/js/controllers/recipes.js"></script>
     <!-- recipes js file -->
     <!-- <script type="text/javascript" src="/js/controllers/recipes.js"></script> -->
     <!-- our css file(s) -->
@@ -89,9 +89,7 @@
             </form>
             <p>Logged in username: {{ ctrl.user.username }} </p>
             <div>{{ctrl.error}}</div>
-            <div ng-repeat="user in ctrl.user">
-                <h1>{{user.username}}</h1>
-            </div>
+            <!-- removed ng repeat for user -->
         </section>
     </section>
     <!--END LOGIN MODAL-->
@@ -99,16 +97,12 @@
     <!-- RECIPE INDEX -->
     <div class="form">
         <h1>Recipe Controller</h1> <br/>
-        {{ctrl.recipes[0]}}
-        <h3> ==================================================== </h3>
-        <br/>
-        {{ctrl.recipes}}
         <div class="recipes" >
-            <ul ng-repeat="recipe in ctrl.recipes">
-                <li>Title:{{recipe.title}}</li>
-                <!-- <li><p>Description: {{emily.description}}</p></li>
-                <li><p>User Id: {{ emily.user_id }}</p></li>
-                <li><p>Recipe Id: {{ emily.id }}</p></li> -->
+            <ul ng-repeat="recipe in ctrl.recipes.recipes">
+                <li><h3>Title: {{recipe.title}}</h3></li>
+                <li><p>Description: {{recipe.description}}</p></li>
+                <li><p>User Id: {{ recipe.user_id }}</p></li>
+                <li><p>Recipe Id: {{ recipe.id }}</p></li>
             </ul>
         </div>
     </div>
