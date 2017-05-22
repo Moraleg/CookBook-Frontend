@@ -3,17 +3,17 @@
   <head>
     <meta charset="utf-8">
     <title>Cookbook</title>
-    <!-- javascript -->
     <!-- angular -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
-    <!-- login/logout js file(s) -->
-    <script type="text/javascript" src="/js/login-logout.js"></script>
+    <!-- login form controller file(s) -->
+    <script type="text/javascript" src="/js/controllers/users.js"></script>
     <!-- css -->
     <!-- cdn (skelton bootstrap whatever)-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <!-- our css file(s) -->
     <link rel="stylesheet" type="text/css" href="/css/style.css" />
   </head>
-  <body ng-controller= "mainController as ctrl">
+  <body ng-controller="mainController as ctrl">
     <!-- HEADER -->
     <header>
       <h2 class="logo">HUNGRY FOR MORE</h2>
@@ -29,47 +29,61 @@
     <!--END HEADER-->
 
     <!--MAIN PAGE-->
-    <div id="splash" ng-if="viewCtrl.currentView === 'splash'">
+    <div>
      <section class="banner">
-       <h1 class="banner-h1">Find exciting activity ideas to get your kids moving.</h1>
-       <a href="#" ng-click="viewCtrl.changeView('activities')">BROWSE RECIPES</a>
+       <h1 class="banner-h1">Browse hundreds of recipe ideas to get <br/> yourself back in the  kitchen</h1>
+       <a class="browse" href="#" ng-click="">BROWSE RECIPES</a>
      </section>
      <main class="main-content">
        <section class="mid">
          <p>BENEFIT</p>
-         <p>BENEFIT</p>
-         <p>BENEFIT</p>
        </section>
+       <section class="mid">
+         <p>BENEFIT</p>
+      </section>
+      <section class="mid">
+       <p>BENEFIT</p>
+     </section>
      </main>
    </div>
   <!--END MAIN PAGE-->
 
   <!--CREATE ACCOUNT MODAL-->
-  <section id="signup-modal" class="modal">
+  <!-- <section id="signup-modal" class="modal">
     <section class="modal-input-box">
-      <sign-up-form></sign-up-form>
+      <h2>Create Account</h2>
+          {{ctrl.message}}
+
+        <form ng-submit="ctrl.createAccount()">
+        <input  ng-model="ctrl.newuser.username" type="text" placeholder="Username"><br/>
+        <input  ng-model="ctrl.newuser.password"    type="password" placeholder="Password"><br/>
+        <input type="submit" value="Sign Up"><br/>
+        </form>
     </section>
-  </section>
+  </section> -->
   <!--END CREATE ACCOUNT MODAL-->
 
   <!--LOGIN MODAL-->
- <section id="login-modal" class="modal">
-   <section class="modal-input-box">
-     <login-form></login-form>
+ <section>
+   <section>
+     <!--Button to close modal-->
+     <div>
+     <a class="close">X</a>
+     </div>
+     <!-- Button to close the modal END-->
+     <form ng-submit="ctrl.login(user)">
+       <input type="text" ng-model="user.username" placeholder="username"/>
+       <input type="password" ng-model="user.password" placeholder="password"/>
+       <input ng-click="user.login()" type="submit"/>
+     </form>
+     <p>Logged in username: {{ ctrl.user.username }} </p>
+     <div>{{ctrl.error}}</div>
+     <div ng-repeat="user in ctrl.user">
+       <h1>{{user.username}}</h1>
+     </div>
+
    </section>
  </section>
- <form ng-submit="ctrl.login(userPass)">
-   <input type="text" ng-model="userPass.username" placeholder="username"/>
-   <input type="password" ng-model="userPass.password" placeholder="password"/>
-   <input type="submit"/>
- </form>
- <p>Logged in username: {{ ctrl.user.username }} </p>
-
- <h4 ng-click="ctrl.getUsers()">click to see users</h4>
- <div>{{ctrl.error}}</div>
- <div ng-repeat="user in ctrl.users">
-   <h1>{{user.username}}</h1>
- </div>
  <!--END LOGIN MODAL-->
 
  <!-- CREATE RECIPE -->
@@ -82,6 +96,7 @@
   <!-- EDIT RECIPE -->
   <section class="modal">
    <section class="modal-input-box">
+      <button ng-click="ctrl.deleteRecipe()">Delete Recipe</button>
    </section>
  </section>
    <!--EDITRECIPE -->
@@ -93,6 +108,8 @@
  </section>
  <!--END USER EDIT/DELETE MODAL-->
 
+
+ <button ng-click="ctrl.deleteAccount()">Delete Account</button>
 
   </body>
 </html>

@@ -48,4 +48,114 @@ nav a {
 
 nav a:hover {
   color: #333;
+  text-decoration: none;
+}
+
+
+.banner {
+  background-image: url('/images/banner-img.jpg');
+  background-repeat: no-repeat;
+  background-position: 55% 70%;
+  background-size: cover;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  min-height: 460px;
+  height: 550px;
+}
+
+.banner-h1 {
+  text-align: center;
+  color: white;
+  line-height: 40px;
+  letter-spacing: 2px;
+  font-weight: normal;
+  text-shadow: 1px 1px 1px #333;
+  margin-top: 18vw;
+  font-size: 2em;
+}
+
+.browse {
+  font-size: 1em;
+  text-decoration: none;
+  letter-spacing: 0.46px;
+  color: white;
+  border: 2px solid #F65C5B;
+  background-color: #F65C5B;
+  padding: 10px 20px;
+  border-radius: 20px;
+}
+
+.browse:hover {
+  border: 2px solid #F65C5B;
+  background-color: #F65C5B;
+  color: white;
+}
+
+.main-content {
+  margin-top: 25px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 1em;
+  flex-flow: row wrap;
+}
+
+.mid {
+  display: inline-block;
+  text-align: center;
+  padding: 1vh 1vw;
+  width: 32%;
+}
+
+
+
+
+
+
+
+
+/*=====================================*/
+
+/* media breakpoint */
+@media (max-width: 700px) {
+  .mid {
+    width: 100%;
+    /*font-size: 3.5em;*/
+  }
+
+  .banner-h1 {
+    font-size: 1.3em;
+    line-height: normal;
+  }
+
+  #mid {
+    border-right: 0;
+    border-left: 0;
+    border-bottom: 1px solid #ACACAC;
+    border-top: 1px solid #ACACAC;
+  }
+
+  .main-content {
+    margin: 5vh 5vw;
+  }
+
+  .logo {
+    font-size: 1em;
+    width: 30%;
+  }
+
+  nav {
+    font-size: .7em;
+    width: 70%;
+  }
+
+  /*.modal-input-box {
+    margin: 10vh 3vw;
+  }*/
+
+  input {
+    border: 1px solid #ccc;
+  }
 }
