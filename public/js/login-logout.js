@@ -83,7 +83,7 @@ app.controller('mainController', ['$http', function($http) {
         console.log("get one recipe ", id);
         $http({
             method: 'GET',
-            url: '/recipe/:id'
+            url: this.url + '/recipes/' + id
         }).then(function(result){
             console.log(result);
             this.recipe = result.data;
@@ -92,22 +92,6 @@ app.controller('mainController', ['$http', function($http) {
         });
     };
 
-    // //Show Recipes
-    // this.showRecipe = function(id) {
-    //     this.recipe_id = id;
-    //     console.log("Show Recipe click");
-    //     // console.log();
-    //
-    //     $http({
-    //         method: 'GET',
-    //         url: 'http://localhost:3000/recipes/:id'
-    //         // data: this.data
-    //     }).then(function(result) {
-    //         console.log("what", result);
-    //         this.recipe = result.data;
-    //         console.log(this.recipe);
-    //     });
-    // };//End showRecipe
 
     // function to add recipes to the data base
     this.recipeForm = function() {
@@ -125,11 +109,11 @@ app.controller('mainController', ['$http', function($http) {
 
     this.updateRecipe = function(id) {
         console.log('This is the update route');
-        console.log('Update Form Data: ',this.updatedata);
+        console.log('Update Form Data: ', this.updatedata);
         $http({
             method: 'PUT',
-            url:'http://localhost:3000/recipes/:id',
-            data: this.updatedata
+            url:this.url + '/recipes/' + id,
+            data:this.updatedata
         }).then(function (result) {
             console.log('Update data: ', result);
             this.updatedata = {};
@@ -142,11 +126,12 @@ app.controller('mainController', ['$http', function($http) {
         $http({
             method: 'DELETE',
             url: this.url + '/recipes/' + id,
+            data: this.deletedata
         }).then(function(reponse) {
+            console.log("deleting");
             console.log(response);
-            this.notices = response.data;
+            this.getRecipes();
         }.bind(this));
     };
-
 
 }]); //End mainController
