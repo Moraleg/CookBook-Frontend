@@ -5,7 +5,7 @@ app.controller('mainController', ['$http', function($http) {
 
   //this.url = 'http://hungry-for-more.herokuapp.com';
   this.user = {};//empty object for user
-  this.url = 'http://localhost:3000';
+  this.url = 'http://localhost:3000' || 'http://hungry-for-more.herokuapp.com';
 
 
 
