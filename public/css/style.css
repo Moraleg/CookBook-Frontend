@@ -1,8 +1,3 @@
-html {
-  margin: 0;
-  padding: 0;
-}
-
 body {
   margin: 0;
   padding: 0;
@@ -162,6 +157,7 @@ nav a:hover {
   width: 100%;
   z-index: 1;
   background-color: rgba(48, 48, 48, 0.7);
+  overflow: scroll;
 }
 
 .modal-input-box {
@@ -187,7 +183,14 @@ label {
   margin-left: 21px;
 }
 
-#username, #password, #confirmPassword {
+.username, .password, .confirmPassword, .title, .ingredients, .description, .directions {
+  padding: 10px;
+  display: block;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.servings, .image{
   padding: 10px;
   display: block;
   width: 90%;
@@ -200,25 +203,67 @@ label {
 
 .close {
   background-color: white;
-  color: #2BCEC5;
+  color: #F65C5B;
   cursor: pointer;
 }
 
 .close:hover {
+  color: #566473;;
+}
+
+/*.benefit {
+  margin-top: 25px;
+  font-size: 30px;
+  color: #2BCEC5;
+}*/
+
+
+/*****************GET STARTED MODAL*******************/
+
+#signup-modal {
+  overflow: auto;
+  display: none;
+}
+
+sign-up-form {
+  text-align: left;
   color: #333;
 }
 
-.benefit {
-  margin-top: 25px;
-  font-size: 30px;
+sign-up-form h2 {
+  font-weight: normal;
+  text-align: center;
+}
+
+.create-account-btn {
+  letter-spacing: 0.46px;
+  color: white;
+  border: 2px solid #F65C5B;
+  background-color: #F65C5B;
+  padding: 10px 20px;
+  border-radius: 20px;
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+  cursor: pointer;
+}
+
+.create-account-btn:hover {
+  border: 2px solid #F65C5B;
+  background-color: #F65C5B;
+  transition: .5s;
+}
+
+.login-anchor {
+  text-decoration: none;
   color: #2BCEC5;
 }
 
 /**********************LOGIN MODAL*******************/
 
 #login-modal {
-  /*overflow: auto;
-  display: none;*/
+  overflow: auto;
+  display: none;
 }
 
 
@@ -232,11 +277,11 @@ login-form h2 {
   text-align: center;
 }
 
-#login-btn {
+.login-btn {
   letter-spacing: 0.46px;
   color: white;
-  border: 2px solid #2BCEC5;
-  background-color: #2BCEC5;
+  border: 2px solid #F65C5B;
+  background-color: #F65C5B;
   padding: 10px 55px;
   border-radius: 20px;
   text-align: center;
@@ -245,15 +290,33 @@ login-form h2 {
   cursor: pointer;
 }
 
-#login-btn:hover {
-  border: 2px solid #6adcd6;
-  background-color: #6adcd6;
+.login-btn:hover {
+  border: 2px solid #F65C5B;
+  background-color: #F65C5B;
   transition: .5s
 }
 
+/**********************EDIT ACCOUNT MODAL*******************/
 
 
+#edit-user-modal {
+  overflow: auto;
+  display: none;
+}
 
+/**********************CREATE RECIPE MODAL*******************/
+
+#create-recipe {
+  overflow: auto;
+  display: none;
+}
+
+/**********************EDIT RECIPE MODAL*******************/
+
+#edit-recipe {
+  overflow: auto;
+  display: none;
+}
 
 /*=====================================*/
 
@@ -293,9 +356,9 @@ login-form h2 {
     width: 70%;
   }
 
-  /*.modal-input-box {
+  .modal-input-box {
     margin: 10vh 3vw;
-  }*/
+  }
 
   input {
     border: 1px solid #ccc;
