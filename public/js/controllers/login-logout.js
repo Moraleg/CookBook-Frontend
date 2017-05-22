@@ -3,9 +3,9 @@ var app = angular.module('cookbook_app', []);
 app.controller('mainController', ['$http', function($http) {
 
   // this.test = "mainController is working!";
-  //this.url = 'http://hungry-for-more.herokuapp.com';
   //backend server location
-  this.url = 'http://localhost:3000' || 'http://hungry-for-more.herokuapp.com';
+  this.url = //'http://localhost:3000' ||
+   'https://hungry-for-more.herokuapp.com';
   //empty object for user
   this.user = {};
   this.notices = [];
@@ -193,7 +193,7 @@ app.controller('mainController', ['$http', function($http) {
       console.log('Update Form Data: ',this.updatedata);
       $http({
         method: 'PUT',
-        url:'http://localhost:3000/recipes/:id',
+        url: this.url + '/recipes/:id',
         data: this.updatedata
       }).then(function (result) {
         console.log('Update data: ', result);
