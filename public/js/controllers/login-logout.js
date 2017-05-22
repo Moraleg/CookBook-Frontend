@@ -158,7 +158,7 @@ app.controller('mainController', ['$http', function($http) {
       console.log("get one recipe ", id);
       $http({
         method: 'GET',
-        url: '/recipe/:id'
+        url: this.url + '/recipes/' + id
       }).then(function(result){
         console.log(result);
         this.recipe = result.data;
