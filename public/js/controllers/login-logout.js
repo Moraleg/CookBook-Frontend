@@ -4,7 +4,7 @@ app.controller('mainController', ['$http', function($http) {
 
   // this.test = "mainController is working!";
   //backend server location
-  this.url = //'http://localhost:3000' ||
+  this.url = 'http://localhost:3000' ||
    'https://hungry-for-more.herokuapp.com';
   //empty object for user
   this.user = {};
