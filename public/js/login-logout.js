@@ -112,11 +112,12 @@ app.controller('mainController', ['$http', function($http) {
         console.log('Update Form Data: ', this.updatedata);
         $http({
             method: 'PUT',
-            url:this.url + '/recipes/' + id,
+            url:this.url + '/recipes/' + recipe.id,
             data:this.updatedata
         }).then(function (result) {
             console.log('Update data: ', result);
             this.updatedata = {};
+            this.getRecipes();
         }.bind(this));
     }; //end update data
 
