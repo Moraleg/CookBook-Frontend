@@ -218,4 +218,36 @@ app.controller('mainController', ['$http', function($http) {
     };
 
 
+//==============EVENT LISTENERS=========================
+    //Event listener to close sign up modal
+  $('.close').on('click', function () {
+    $('#signup-modal').css('display', 'none');
+  });
+
+  //Event listener to close login modal
+  $('.close').on('click', function() {
+    $('#login-modal').css('display', 'none');
+  });
+
+  //Event listener to close edit-account modal
+  $('.close').on('click', function() {
+    $('#edit-user-modal').css('display', 'none');
+  });
+
+  //Event listener to open sign-up modal
+  $('.signup').on('click', function () {
+    $('#signup-modal').css('display', 'block');
+  });
+
+  //Event listener to open login modal
+  $('.login').on('click', function () {
+    $('#login-modal').css('display', 'block');
+  });
+
+  //Event listener to open edit-accout modal
+  $('.edit-account').on('click', function () {
+    $('#edit-user-modal').css('display', 'block');
+  });
+
+
 }]); //End mainController

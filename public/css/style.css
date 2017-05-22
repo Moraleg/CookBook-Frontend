@@ -183,14 +183,14 @@ label {
   margin-left: 21px;
 }
 
-#username, #password, #confirmPassword, #title, #ingredients, #description, #directions {
+.username, .password, .confirmPassword, .title, .ingredients, .description, .directions {
   padding: 10px;
   display: block;
   width: 90%;
   margin: 0 auto;
 }
 
-#servings, #image{
+.servings, .image{
   padding: 10px;
   display: block;
   width: 90%;
@@ -235,7 +235,7 @@ sign-up-form h2 {
   text-align: center;
 }
 
-#create-account-btn {
+.create-account-btn {
   letter-spacing: 0.46px;
   color: white;
   border: 2px solid #F65C5B;
@@ -248,7 +248,7 @@ sign-up-form h2 {
   cursor: pointer;
 }
 
-#create-account-btn:hover {
+.create-account-btn:hover {
   border: 2px solid #F65C5B;
   background-color: #F65C5B;
   transition: .5s;
@@ -261,10 +261,10 @@ sign-up-form h2 {
 
 /**********************LOGIN MODAL*******************/
 
-/*#login-modal {
+#login-modal {
   overflow: auto;
   display: none;
-}*/
+}
 
 
 login-form {
@@ -277,7 +277,7 @@ login-form h2 {
   text-align: center;
 }
 
-#login-btn {
+.login-btn {
   letter-spacing: 0.46px;
   color: white;
   border: 2px solid #F65C5B;
@@ -290,7 +290,7 @@ login-form h2 {
   cursor: pointer;
 }
 
-#login-btn:hover {
+.login-btn:hover {
   border: 2px solid #F65C5B;
   background-color: #F65C5B;
   transition: .5s

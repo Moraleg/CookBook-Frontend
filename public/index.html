@@ -3,6 +3,8 @@
   <head>
     <meta charset="utf-8">
     <title>Cookbook</title>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g=" crossorigin="anonymous"></script>
     <!-- angular -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
     <!-- loginlogout js file -->
@@ -18,10 +20,10 @@
     <h2 class="logo">HUNGRY FOR MORE</h2>
     <nav class="cl-effect-1" id="cl-effect-1">
       <a href="#">ABOUT</a>
-      <a href="#">LOGIN</a>
-      <a href="#">SIGN UP</a>
+      <a class="login" href="#">LOGIN</a>
+      <a id="open-signup" class="signup" href="#" ng-click="ctrl.createAccount()">SIGN UP</a>
       <a href="#">RECIPES</a>
-      <a href="#">EDIT ACCOUNT</a>
+      <a class="edit-account" href="#">EDIT ACCOUNT</a>
       <a href="#" ng-click="ctrl.logout()">LOG OUT</a>
     </nav>
   </header>
@@ -59,9 +61,9 @@
       <div class="legend-container">
         <legend align="center"><h2>Create Account</h2></legend>
       </div>
-      <input id="username" type="text" ng-model="user.username" placeholder="username"/><br/>
-      <input id="password" type="password" ng-model="user.password" placeholder="password" required min-length="8"/><br/>
-      <input id="create-account-btn" type="submit" value="Sign Up"/>
+      <input class="username" type="text" ng-model="user.username" placeholder="username"/><br/>
+      <input class="password" type="password" ng-model="user.password" placeholder="password" required min-length="8"/><br/>
+      <input class="create-account-btn" type="submit" value="Sign Up"/>
     </form>
   </section>
 </section>
@@ -80,12 +82,12 @@
          <legend><h2>Login</h2></legend>
        </div>
        <label for="username">Username:</label>
-       <input id="username" type="text" ng-model="user.username" placeholder="username"/>
+       <input class="username" type="text" ng-model="user.username" placeholder="username"/>
        <br/>
        <label for="password">Password:</label>
-       <input id="password" type="password" ng-model="user.password" placeholder="password" required min-length="8"/>
+       <input class="password" type="password" ng-model="user.password" placeholder="password" required min-length="8"/>
        <br/>
-       <input id="login-btn" ng-click="user.login()" type="submit"/>
+       <input class="login-btn" ng-click="user.login()" type="submit"/>
      </form>
      <p>Logged in username: {{ ctrl.user.username }} </p>
      <div>{{ctrl.error}}</div>
@@ -122,18 +124,18 @@
         <legend><h2>Create Recipe</h2></legend>
       </div>
       <label for="title">Title:</label>
-      <input id="title" type="text" ng-model="ctrl.formdata.title"placeholder="title"/><br/>
+      <input class="title" type="text" ng-model="ctrl.formdata.title" placeholder="title"/><br/>
       <label for="ingredients">Ingredients:</label>
-      <input id="ingredients" type="text" ng-model="ctrl.formdata.ingredients"placeholder="ingredients"/><br/>
+      <input class="ingredients" type="text" ng-model="ctrl.formdata.ingredients" placeholder="ingredients"/><br/>
       <label for="description">Description:</label>
-      <input id="description" type="text" ng-model="ctrl.formdata.description"placeholder="description"/><br/>
+      <input class="description" type="text" ng-model="ctrl.formdata.description" placeholder="description"/><br/>
       <label for="servings">Servings:</label>
-      <input id="servings" type="text" ng-model="ctrl.formdata.servings"placeholder="servings"/><br/>
+      <input class="servings" type="text" ng-model="ctrl.formdata.servings" placeholder="servings"/><br/>
       <label for="Image">Image:</label>
-      <input id="image" type="text" ng-model="ctrl.formdata.img"placeholder="image"/><br/>
+      <input class="image" type="text" ng-model="ctrl.formdata.img" placeholder="image"/><br/>
       <label for="directions">Directions:</label>
-      <input id="directions" type="text" ng-model="ctrl.formdata.directions"placeholder="directions"/><br/>
-      <input id="login-btn" type="submit" class="submit" value="Create Recipe"/>
+      <input class="directions" type="text" ng-model="ctrl.formdata.directions" placeholder="directions"/><br/>
+      <input class="login-btn submit" type="submit" value="Create Recipe"/>
     </form>
   </section>
 </section>
@@ -147,18 +149,18 @@
      </div>
       <form ng-submit="ctrl.updateRecipe(id)">
         <label for="title">Title:</label>
-        <input id="title" type="text" ng-model="ctrl.formdata.title"placeholder="title"/><br/>
+        <input class="title" type="text" ng-model="ctrl.formdata.title" placeholder="title"/><br/>
         <label for="ingredients">Ingredients:</label>
-        <input id="ingredients" type="text" ng-model="ctrl.formdata.ingredients"placeholder="ingredients"/><br/>
+        <input class="ingredients" type="text" ng-model="ctrl.formdata.ingredients" placeholder="ingredients"/><br/>
         <label for="description">Description:</label>
-        <input id="description" type="text" ng-model="ctrl.formdata.description"placeholder="description"/><br/>
+        <input class="description" type="text" ng-model="ctrl.formdata.description" placeholder="description"/><br/>
         <label for="servings">Servings:</label>
-        <input id="servings" type="text" ng-model="ctrl.formdata.servings"placeholder="servings"/><br/>
+        <input class="servings" type="text" ng-model="ctrl.formdata.servings" placeholder="servings"/><br/>
         <label for="Image">Image:</label>
-        <input id="image" type="text" ng-model="ctrl.formdata.img"placeholder="image"/><br/>
+        <input class="image" type="text" ng-model="ctrl.formdata.img" placeholder="image"/><br/>
         <label for="directions">Directions:</label>
-        <input id="directions" type="text" ng-model="ctrl.formdata.directions"placeholder="directions"/><br/>
-        <input id="login-btn" type="submit" class="submit" value="Edit Recipe"/>
+        <input class="directions" type="text" ng-model="ctrl.formdata.directions" placeholder="directions"/><br/>
+        <input class="login-btn submit" type="submit" value="Edit Recipe"/>
       </form>
       <button ng-click="ctrl.deleteRecipe(id)">Delete Recipe</button>
    </section>
@@ -177,9 +179,9 @@
       <div class="legend-container">
         <legend align="center"><h2>Edit Account</h2></legend>
       </div>
-      <input id="username" type="text" ng-model="user.username" placeholder="username"/><br/>
-      <input id="password" type="password" ng-model="user.password" placeholder="password" required min-length="8"/><br/>
-      <input id="create-account-btn" type="submit" value="Edit Account"/>
+      <input class="username" type="text" ng-model="user.username" placeholder="username"/><br/>
+      <input class="password" type="password" ng-model="user.password" placeholder="password" required min-length="8"/><br/>
+      <input class="create-account-btn" type="submit" value="Edit Account"/>
     </form>
      <button ng-click="ctrl.deleteAccount()">Delete Account</button>
    </section>
