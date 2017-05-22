@@ -105,7 +105,7 @@
 
         <!-- RECIPE INDEX -->
         <div class="form"  ng-controller="mainController as ctrl">
-            <h1>Recipe Controller</h1> <br>
+            <h1>Recipe Controller</h1>
             <div class="recipes" ng-repeat="recipe in ctrl.recipes">
                 <ul ng-click = "ctrl.getOneRecipe(recipe.id)">
                     <li><h3> Title:{{ recipe.title }}</h3></li>
