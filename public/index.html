@@ -18,12 +18,12 @@
     <header>
       <h2 class="logo">HUNGRY FOR MORE</h2>
       <nav class="cl-effect-1" id="cl-effect-1">
-        <a href="cl-effect-1">ABOUT</a>
-        <a href="cl-effect-1">LOGIN</a>
-        <a href="cl-effect-1">SIGN UP</a>
-        <a href="cl-effect-1">RECIPE FEED</a>
-        <a href="cl-effect-1">EDIT ACCOUNT</a>
-        <a href="cl-effect-1" ng-click="ctrl.logout()">LOG OUT</a>
+        <a href="">ABOUT</a>
+        <a href="">LOGIN</a>
+        <a href="">SIGN UP</a>
+        <a href="">RECIPE FEED</a>
+        <a href="">EDIT ACCOUNT</a>
+        <a href="" ng-click="ctrl.logout()">LOG OUT</a>
       </nav>
     </header>
     <!--END HEADER-->
@@ -49,18 +49,16 @@
   <!--END MAIN PAGE-->
 
   <!--CREATE ACCOUNT MODAL-->
-  <!-- <section id="signup-modal" class="modal">
+  <section id="signup-modal" class="">
     <section class="modal-input-box">
-      <h2>Create Account</h2>
-          {{ctrl.message}}
 
-        <form ng-submit="ctrl.createAccount()">
-        <input  ng-model="ctrl.newuser.username" type="text" placeholder="Username"><br/>
-        <input  ng-model="ctrl.newuser.password"    type="password" placeholder="Password"><br/>
-        <input type="submit" value="Sign Up"><br/>
-        </form>
+          <form ng-submit="ctrl.createAccount(user)">
+      <label>Create an Account </label><input type="text" ng-model="user.username" placeholder="username"/>
+      <input type="password" ng-model="user.password" placeholder="password"/>
+      <input type="submit" value="Sign Up"/>
+    </form>
     </section>
-  </section> -->
+  </section>
   <!--END CREATE ACCOUNT MODAL-->
 
   <!--LOGIN MODAL-->

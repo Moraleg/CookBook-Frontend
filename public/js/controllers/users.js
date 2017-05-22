@@ -8,6 +8,27 @@ app.controller('mainController', ['$http', '$scope', function($http, $scope) {
   //empty object for user
   this.user = {};
 
+  //  =================================================
+  //                    USER CREATE
+  // =================================================
+
+  this.createAccount = function(user) {
+    console.log(user);
+    $http({
+       method: 'POST',
+       url: this.url + '/users',
+       data: {
+         user: {
+          username: user.username,
+          password: user.password
+          }
+       },
+     }).then(function(response) {//sucess
+       console.log(response);
+       this.user = response.data.user;
+     }.bind(this));
+  };
+
 // =================================================
 //                    USER LOGIN
 // =================================================
