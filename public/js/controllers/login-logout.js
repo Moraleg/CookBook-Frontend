@@ -11,8 +11,9 @@ app.controller('mainController', ['$http', function($http) {
   this.notices = [];
   this.formdata = {};
   this.updatedata = {};
-  this.recipe = [];
-  this.recipes = [];
+  //changed this.recipe from array to object
+  this.recipe = {};
+  //this.recipes = [];
   this.getrecipe = [];
   // this.recipeId = ();
 
@@ -141,9 +142,9 @@ app.controller('mainController', ['$http', function($http) {
         method: 'GET',
         url: this.url + '/recipes',
       }).then(function(response) {
-        // console.log(response);
+        console.log(response);
         this.recipes = response.data;
-        console.log(this.recipes);
+        //console.log(this.recipes);
       }.bind(this));
     };
     this.getRecipes();
