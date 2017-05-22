@@ -7,7 +7,7 @@
     <!-- angular -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
     <!-- login/logout js file(s) -->
-    <script type="text/javascript" src="/js/login-logout.js"></script>
+    <!-- <script type="text/javascript" src="/js/login-logout.js"></script> -->
     <!-- <script type="text/javascript" src="/js/recipes.js"></script> -->
     <!-- css -->
     <!-- cdn (skelton bootstrap whatever)-->
@@ -123,19 +123,20 @@
         </section>
         <!--END USER EDIT/DELETE MODAL-->
         <!--START RECIPE-->
-        <nav ng-controller="mainController as ctrl">
+        <nav>
 
-            <div class="recipes" ng-repeat="recipe in ctrl.recipes">
-                <h3>{{ recipes.data.title }}</h3>
-                <p>{{ recipe.description }}</p>
-                <p>{{ recipe.user_id }}</p>
-            </div>
-            <div class="form">
+
+            <div class="form"  ng-controller="mainController as ctrl">
                 <h1>Recipe Controller</h1> <br>
-
+                <div class="recipes" ng-repeat="recipe in ctrl.recipes">
+                    <h3 ng-click = "ctrl.getOneRecipe(recipe.id)">Title:{{ recipe.title }}</h3>
+                    <p>Description: {{ recipe.description }}</p>
+                    <p>User Id: {{ recipe.user_id }}</p>
+                    <p>Recipe Id: {{ recipe.id }}</p>
+                </div>
 
                 <h4>Add a recipe</h4><br>
-                {{ctrl.test}}
+
 
                 <form ng-submit="ctrl.recipeForm()">
                     <input type="text" ng-model="ctrl.formdata.title"placeholder="title"/><br>
@@ -146,6 +147,20 @@
                     <input type="text" ng-model="ctrl.formdata.img"placeholder="img"/><br>
                     <input type="submit" class="submit" value="Create Recipe">
                 </form>
+                <h4>Update a recipe</h4><br>
+
+
+                <form ng-submit="ctrl.updateRecipe(id)">
+                    <input type="text" ng-model="ctrl.updatedata.title"placeholder="title"/><br>
+                    <input type="text" ng-model="ctrl.updatedata.ingredients"placeholder="ingredients"/><br>
+                    <input type="text" ng-model="ctrl.updatedata.description"placeholder="description"/><br>
+                    <input type="text" ng-model="ctrl.updatedata.directions"placeholder="directions"/><br>
+                    <input type="text" ng-model="ctrl.updatedata.servings"placeholder="servings"/><br>
+                    <input type="text" ng-model="ctrl.updatedata.img"placeholder="img"/><br>
+                    <input type="submit" class="submit" value="update Recipe">
+
+                </form>
+                <button ng-click="ctrl.deleteRecipe(id)">Delete Recipe</button>
             </div>
 
         </nav>
