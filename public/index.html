@@ -51,28 +51,13 @@
   <!--END MAIN PAGE-->
 
   <!--CREATE ACCOUNT MODAL-->
-  <!-- <section id="signup-modal" class="modal">
-    <section class="modal-input-box">
-      <h2>Create Account</h2>
-          {{ctrl.message}}
-
-        <form ng-submit="ctrl.createAccount()">
-        <input  ng-model="ctrl.newuser.username" type="text" placeholder="Username"><br/>
-        <input  ng-model="ctrl.newuser.password"    type="password" placeholder="Password"><br/>
-        <input type="submit" value="Sign Up"><br/>
-        </form>
-    </section>
-<<<<<<< HEAD
-  </section> -->
-=======
   </section>
   <form ng-submit="ctrl.createAccount(user)">
     <label>Create an Account </label><input type="text" ng-model="user.username" placeholder="username"/>
     <input type="password" ng-model="user.password" placeholder="password"/>
     <input type="submit"/>
   </form>
->>>>>>> c05a3aa571c817f8274c90d26aaf06aa8b207861
-  <!--END CREATE ACCOUNT MODAL-->
+<!--END CREATE ACCOUNT MODAL-->
 
   <!--LOGIN MODAL-->
  <section id="login-modal" class="modal">
