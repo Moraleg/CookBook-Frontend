@@ -47,9 +47,46 @@ nav a {
 }
 
 nav a:hover {
-  color: #333;
+  color: #566473;
   text-decoration: none;
 }
+
+/* Effect 1: Brackets */
+.cl-effect-1 a::before,
+.cl-effect-1 a::after {
+	display: inline-block;
+	opacity: 0;
+	-webkit-transition: -webkit-transform 0.3s, opacity 0.2s;
+	-moz-transition: -moz-transform 0.3s, opacity 0.2s;
+	transition: transform 0.3s, opacity 0.2s;
+}
+
+.cl-effect-1 a::before {
+	margin-right: 10px;
+	content: '[';
+	-webkit-transform: translateX(20px);
+	-moz-transform: translateX(20px);
+	transform: translateX(20px);
+}
+
+.cl-effect-1 a::after {
+	margin-left: 10px;
+	content: ']';
+	-webkit-transform: translateX(-20px);
+	-moz-transform: translateX(-20px);
+	transform: translateX(-20px);
+}
+
+.cl-effect-1 a:hover::before,
+.cl-effect-1 a:hover::after,
+.cl-effect-1 a:focus::before,
+.cl-effect-1 a:focus::after {
+	opacity: 1;
+	-webkit-transform: translateX(0px);
+	-moz-transform: translateX(0px);
+	transform: translateX(0px);
+}
+
 
 
 .banner {
@@ -97,9 +134,9 @@ nav a:hover {
 .main-content {
   margin-top: 25px;
   display: flex;
-  justify-content: space-between;
+  /*justify-content: space-between;*/
   font-size: 1em;
-  flex-flow: row wrap;
+  /*flex-flow: row wrap;*/
 }
 
 .mid {
@@ -109,8 +146,110 @@ nav a:hover {
   width: 32%;
 }
 
+#mid {
+  border-left: 1px solid #ACACAC;
+  border-right: 1px solid #ACACAC;
+}
 
 
+/*****************UNIVERSAL MODAL CODE*******************/
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+  background-color: rgba(48, 48, 48, 0.7);
+}
+
+.modal-input-box {
+  background-color: white;
+  max-width: 450px;
+  border-radius: 4px;
+  margin: 150px auto;
+  padding: 2%;
+  line-height: 120%;
+}
+
+.legend-container {
+  display: flex;
+  margin: auto;
+}
+
+.legend-container legend {
+  margin: auto;
+  margin-bottom: 12px;
+}
+
+label {
+  margin-left: 21px;
+}
+
+#username, #password, #confirmPassword {
+  padding: 10px;
+  display: block;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.modal-text {
+  text-align: center;
+}
+
+.close {
+  background-color: white;
+  color: #2BCEC5;
+  cursor: pointer;
+}
+
+.close:hover {
+  color: #333;
+}
+
+.benefit {
+  margin-top: 25px;
+  font-size: 30px;
+  color: #2BCEC5;
+}
+
+/**********************LOGIN MODAL*******************/
+
+#login-modal {
+  overflow: auto;
+  display: none;
+}
+
+
+login-form {
+  text-align: left;
+  color: #333;
+}
+
+login-form h2 {
+  font-weight: normal;
+  text-align: center;
+}
+
+#login-btn {
+  letter-spacing: 0.46px;
+  color: white;
+  border: 2px solid #2BCEC5;
+  background-color: #2BCEC5;
+  padding: 10px 55px;
+  border-radius: 20px;
+  text-align: center;
+  display: block;
+  margin: 15px auto;
+  cursor: pointer;
+}
+
+#login-btn:hover {
+  border: 2px solid #6adcd6;
+  background-color: #6adcd6;
+  transition: .5s
+}
 
 
 
@@ -126,7 +265,7 @@ nav a:hover {
   }
 
   .banner-h1 {
-    font-size: 1.3em;
+    font-size: 1.2em;
     line-height: normal;
   }
 
@@ -139,6 +278,9 @@ nav a:hover {
 
   .main-content {
     margin: 5vh 5vw;
+    flex-flow: row wrap;
+    justify-content: space-between;
+
   }
 
   .logo {

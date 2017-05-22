@@ -9,7 +9,7 @@
     <script type="text/javascript" src="/js/controllers/users.js"></script>
     <!-- css -->
     <!-- cdn (skelton bootstrap whatever)-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
     <!-- our css file(s) -->
     <link rel="stylesheet" type="text/css" href="/css/style.css" />
   </head>
@@ -17,13 +17,13 @@
     <!-- HEADER -->
     <header>
       <h2 class="logo">HUNGRY FOR MORE</h2>
-      <nav>
-        <a href="#">ABOUT</a>
-        <a href="#">LOGIN</a>
-        <a href="#">SIGN UP</a>
-        <a href="#">RECIPE FEED</a>
-        <a href="#">EDIT ACCOUNT</a>
-        <a href="#" ng-click="ctrl.logout()">LOG OUT</a>
+      <nav class="cl-effect-1" id="cl-effect-1">
+        <a href="cl-effect-1">ABOUT</a>
+        <a href="cl-effect-1">LOGIN</a>
+        <a href="cl-effect-1">SIGN UP</a>
+        <a href="cl-effect-1">RECIPE FEED</a>
+        <a href="cl-effect-1">EDIT ACCOUNT</a>
+        <a href="cl-effect-1" ng-click="ctrl.logout()">LOG OUT</a>
       </nav>
     </header>
     <!--END HEADER-->
@@ -38,7 +38,7 @@
        <section class="mid">
          <p>BENEFIT</p>
        </section>
-       <section class="mid">
+       <section class="mid" id="mid">
          <p>BENEFIT</p>
       </section>
       <section class="mid">
@@ -64,16 +64,23 @@
   <!--END CREATE ACCOUNT MODAL-->
 
   <!--LOGIN MODAL-->
- <section>
-   <section>
+ <section id="login-modal" class="modal">
+   <section class="modal-input-box">
      <!--Button to close modal-->
      <div>
      <a class="close">X</a>
      </div>
      <!-- Button to close the modal END-->
      <form ng-submit="ctrl.login(user)">
+       <div class="legend-container">
+         <legend><h2>Login</h2></legend>
+       </div>
+       <label for="username">Username:</label>
        <input type="text" ng-model="user.username" placeholder="username"/>
+       <br/>
+       <label for="password">Password:</label>
        <input type="password" ng-model="user.password" placeholder="password"/>
+       <br/>
        <input ng-click="user.login()" type="submit"/>
      </form>
      <p>Logged in username: {{ ctrl.user.username }} </p>
@@ -87,14 +94,14 @@
  <!--END LOGIN MODAL-->
 
  <!-- CREATE RECIPE -->
- <section class="modal">
+ <section class="">
   <section class="modal-input-box">
   </section>
 </section>
   <!--END CREATE RECIPE -->
 
   <!-- EDIT RECIPE -->
-  <section class="modal">
+  <section class="">
    <section class="modal-input-box">
       <button ng-click="ctrl.deleteRecipe()">Delete Recipe</button>
    </section>
@@ -102,14 +109,13 @@
    <!--EDITRECIPE -->
 
   <!--USER EDIT/ DELETE MODAL-->
-  <section id="edit-user-modal" class="modal">
+  <section id="edit-user-modal" class="">
    <section class="modal-input-box">
+     <button ng-click="ctrl.deleteAccount()">Delete Account</button>
    </section>
  </section>
  <!--END USER EDIT/DELETE MODAL-->
 
-
- <button ng-click="ctrl.deleteAccount()">Delete Account</button>
 
   </body>
 </html>
