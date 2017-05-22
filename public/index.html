@@ -7,6 +7,8 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
     <!-- login form controller file(s) -->
     <script type="text/javascript" src="/js/controllers/users.js"></script>
+    <!-- loginlogout js file -->
+    <script type="text/javascript" src="/js/login-logout.js"></script>
     <!-- css -->
     <!-- cdn (skelton bootstrap whatever)-->
 
@@ -60,7 +62,16 @@
         <input type="submit" value="Sign Up"><br/>
         </form>
     </section>
+<<<<<<< HEAD
   </section> -->
+=======
+  </section>
+  <form ng-submit="ctrl.createAccount(user)">
+    <label>Create an Account </label><input type="text" ng-model="user.username" placeholder="username"/>
+    <input type="password" ng-model="user.password" placeholder="password"/>
+    <input type="submit"/>
+  </form>
+>>>>>>> c05a3aa571c817f8274c90d26aaf06aa8b207861
   <!--END CREATE ACCOUNT MODAL-->
 
   <!--LOGIN MODAL-->
