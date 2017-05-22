@@ -261,10 +261,10 @@ sign-up-form h2 {
 
 /**********************LOGIN MODAL*******************/
 
-#login-modal {
+/*#login-modal {
   overflow: auto;
   display: none;
-}
+}*/
 
 
 login-form {
