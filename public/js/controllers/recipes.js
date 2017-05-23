@@ -4,7 +4,7 @@ app.controller('mainController', ['$http', function($http) {
 
   // this.test = "mainController is working!";
   //backend server location
-  this.url = 'https://hungry-for-more.herokuapp.com' || 'http://localhost:3000';
+  this.url = 'http://localhost:3000';
 
 
   //empty object for user
@@ -14,7 +14,7 @@ app.controller('mainController', ['$http', function($http) {
   this.updatedata = {};
   //changed this.recipe from array to object
   this.recipe = {};
-  //this.recipes = [];
+  this.recipes = [];
   this.getrecipe = [];
   // this.recipeId = ();
   this.token = false;
@@ -76,36 +76,35 @@ app.controller('mainController', ['$http', function($http) {
   //                 USER UPDATE
   // =================================================
 
-  // this.updateUser = function(user, id) {
-  //   $http({
-  //     method: 'PUT',
-  //     url: this.url + '/users/id',
-  //     data: user,
-  //     headers: {
-  //       Authorization: JSON.parse(localStorage.getItem('token'))
-  //     }
-  //   }).then(function(response) {
-  //     console.log(reponse);
-  //
-  //   }.bind(this));
-  // };//End updateUser()
+  this.updateUser = function(user, id) {
+    $http({
+      method: 'PUT',
+      url: this.url + '/users/' + id,
+      headers: {
+        Authorization: JSON.parse(localStorage.getItem('token'))
+      }
+    }).then(function(response) {
+      console.log(reponse);
+
+    }.bind(this));
+  };//End updateUser()
 
   //  =================================================
   //                 USER DELETE
   // =================================================
   //
-  // this.deleteAccount = function(id) {
-  //   console.log('delete clicked');
-  //   this.user_id = id;
-  //   $http({
-  //     method: 'DELETE',
-  //     url: this.url + '/users/' + id
-  //   }).then(function(reponse) {
-  //     console.log(response);
-  //     this.user = response.data;
-  //     this.logout();
-  //   }.bind(this));
-  // };
+  this.deleteAccount = function(id) {
+    console.log('delete clicked');
+    this.user_id = id;
+    $http({
+      method: 'DELETE',
+      url: this.url + '/users/' + id
+    }).then(function(reponse) {
+      console.log(response);
+      this.user = response.data;
+      this.logout();
+    }.bind(this));
+  };
 
 
   //========================================
@@ -203,7 +202,7 @@ app.controller('mainController', ['$http', function($http) {
     console.log('Update Form Data: ',this.updatedata);
     $http({
       method: 'PUT',
-      url: this.url + '/recipes/:id',
+      url: this.url + '/recipes/' + id,
       data: this.updatedata,
       headers: {
         Authorization: JSON.parse(localStorage.getItem('token'))
@@ -272,7 +271,7 @@ app.controller('mainController', ['$http', function($http) {
     // });
 
     //Event listener to open/close edit-recipe modal
-    $('.open-edit').on('click', function () {
+    $('#open-edit').on('click', function () {
       $('#edit-recipe').css('display', 'block');
     });
     $('.close').on('click', function() {
@@ -280,7 +279,7 @@ app.controller('mainController', ['$http', function($http) {
     });
 
     //Event listener to open/close create-recipe modal
-    $('.create').on('click', function () {
+    $('.create-recipe-open').on('click', function () {
       $('#create-recipe').css('display', 'block');
     });
     $('.close').on('click', function() {

@@ -22,7 +22,7 @@
       <a href="#">ABOUT</a>
       <a ng-show="!ctrl.token" class="login" href="#">LOGIN</a>
       <a ng-show="!ctrl.token" id="open-signup" class="signup" href="#">SIGN UP</a>
-      <a href="#">RECIPES</a>
+      <a ng-show="ctrl.token" class="create-recipe-open" href="#">CREATE RECIPES</a>
       <a ng-show="ctrl.token" class="edit-account" href="#">EDIT ACCOUNT</a>
       <a ng-show="ctrl.token" href="#" ng-click="ctrl.logout()">LOG OUT</a>
     </nav>
@@ -30,11 +30,11 @@
   <!--END HEADER-->
   <!--MAIN PAGE-->
   <div>
-    <section class="banner">
+    <section ng-show="!ctrl.token" class="banner">
       <h1 class="banner-h1">Browse hundreds of recipe ideas to get <br/> yourself back in the  kitchen</h1>
-      <a class="browse" href="#" ng-click="">BROWSE RECIPES</a>
+      <a class="login-btn create-recipe-open" href="#" ng-click="">CREATE RECIPES</a>
     </section>
-    <main class="main-content">
+    <main ng-show="!ctrl.token" class="main-content">
       <section class="mid">
         <p>BENEFIT</p>
       </section>
@@ -47,6 +47,7 @@
     </main>
   </div>
   <!--END MAIN PAGE-->
+
   <!--CREATE ACCOUNT MODAL-->
   <section id="signup-modal" class="modal">
     <section class="modal-input-box">
@@ -92,21 +93,13 @@
   </section>
   <!--END LOGIN MODAL-->
 
-  <!-- CREATE RECIPE BTN -->
-  <!-- <section>
-    <section>
-      <a class="login-btn create" href="#">CREATE RECIPE</a>
-    </section>
-  </section> -->
-  <!-- CREATE RECIPE BTN -->
-
   <!-- RECIPE INDEX -->
   <div class="form">
     <!-- <h1>Recipe Controller</h1><br/> -->
-    <div class="recipes">
-      <div class="recipes-container open-edit" ng-repeat="recipe in ctrl.recipes track by $index" ng-click = "ctrl.getOneRecipe(recipe.id);">
+    <div class="recipes" id="open-edit">
+      <div ng-show="ctrl.token" class="recipes-container" ng-repeat="recipe in ctrl.recipes track by $index" ng-click = "ctrl.getOneRecipe(recipe.id);">
         <section class="icons">
-          <i ng-click="activCtrl.edit(activity)" id="open-edit" class="fa fa-pencil-square-o" aria-hidden="true"></i>
+          <i ng-click="ctrl.edit(recipe)" class="fa fa-pencil-square-o" aria-hidden="true"></i>
         </section>
         <img class="recipe-index-img" src="{{recipe.img}}">
         <h4 class="recipe-index-title">{{recipe.title}}</h4>
@@ -140,7 +133,7 @@
   <!-- RECIPE SHOW END -->
 
   <!-- CREATE RECIPE -->
-  <section id="create-recipe" class="modal" ng-show="!ctrl.token">
+  <section id="create-recipe" class="modal">
     <section class="modal-input-box">
       <div>
         <a class="close">X</a>
@@ -167,7 +160,7 @@
   </section>
   <!--END CREATE RECIPE-->
   <!-- EDIT RECIPE -->
-  <section id="edit-recipe" class="modal" ng-show="!ctrl.token">
+  <section id="edit-recipe" class="modal">
     <section class="modal-input-box">
       <div>
         <a class="close">X</a>
@@ -188,7 +181,7 @@
         <input class="image" type="text" ng-model="ctrl.formdata.img" placeholder="image"/><br/>
         <label for="directions">Directions:</label>
         <input class="directions" type="text" ng-model="ctrl.formdata.directions" placeholder="directions"/><br/>
-        <input class="login-btn submit" type="submit" value="Edit Recipe"/>
+        <input ng-click="user.updateRecipe();" class="login-btn submit" type="submit" value="Edit Recipe"/>
       </form>
       <button class="delete-btn" ng-click="ctrl.deleteRecipe(id)">Delete Recipe</button>
     </section>
@@ -208,7 +201,7 @@
         </div>
         <input class="username" type="text" ng-model="user.username" placeholder="username"/><br/>
         <input class="password" type="password" ng-model="user.password" placeholder="password" required min-length="8"/><br/>
-        <input class="create-account-btn" type="submit" value="Edit Account"/>
+        <input ng-click="ctrl.updateUser()" class="create-account-btn" type="submit" value="Edit Account"/>
       </form>
       <button class="delete-btn" ng-click="ctrl.deleteAccount()">Delete Account</button>
     </section>
