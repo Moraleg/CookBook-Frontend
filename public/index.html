@@ -112,7 +112,11 @@
       <!-- <div>
         <a class="close">X</a>
       </div>
-      <!-- Button to close the modal END-->
+       Button to close the modal END-->
+
+       <!-- ADDED THESE TWO SECTION STARTER TAGS TO REMOVE ERROR -->
+       <section>
+         <section>
         <div><h3>Title: {{recipe.title}}</h3></div>
         <div><img src="{{recipe.img}}"/></div>
         <p>Ingredients: {{recipe.ingredients}}</p>
@@ -120,7 +124,7 @@
         <p>Directions: {{recipe.directions}}</p>
         <p>Servings: {{recipe.servings}}</p>
     </section>
-  </section> -->
+  </section>
   <!-- RECIPE SHOW END -->
   <!-- CREATE RECIPE -->
   <section id="create-recipe" class="modal" ng-show="!ctrl.token">
