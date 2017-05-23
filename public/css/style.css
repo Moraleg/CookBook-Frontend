@@ -1,3 +1,5 @@
+@import url(//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css);
+
 body {
   margin: 0;
   padding: 0;
@@ -218,6 +220,30 @@ label {
 }*/
 
 
+.delete-btn {
+  letter-spacing: 0.46px;
+  color: #F65C5B;
+  border: 2px solid #F65C5B;
+  background-color: white;
+  padding: 8px 47px;
+  border-radius: 20px;
+  text-align: center;
+  display: block;
+  margin: 15px auto;
+  cursor: pointer;
+}
+
+.delete-btn:hover {
+  border: 2px solid #F65C5B;
+  background-color: #F65C5B;
+  color: white;
+  transition: .5s
+}
+
+.ng-binding {
+  text-align: center;
+}
+
 /*****************GET STARTED MODAL*******************/
 
 #signup-modal {
@@ -240,7 +266,7 @@ sign-up-form h2 {
   color: white;
   border: 2px solid #F65C5B;
   background-color: #F65C5B;
-  padding: 10px 20px;
+  padding: 10px 56px;
   border-radius: 20px;
   text-align: center;
   display: block;
@@ -256,7 +282,7 @@ sign-up-form h2 {
 
 .login-anchor {
   text-decoration: none;
-  color: #2BCEC5;
+  color: #F65C5B;
 }
 
 /**********************LOGIN MODAL*******************/
@@ -318,6 +344,60 @@ login-form h2 {
   display: none;
 }
 
+/*****************RECIPE INDEX MODAL*******************/
+
+.form {
+  margin-top: 25px;
+  display: flex;
+}
+
+.recipes {
+  display: inline-block;
+  text-align: center;
+  padding: 1vh 1vw;
+
+}
+
+.recipes-container {
+  width: 25%;
+  height: 200px;
+  margin: 14px 40px;
+  background-color: white;
+  border-radius: 4px;
+  display: inline-block;
+  text-align: center;
+  padding-top: 30px;
+}
+.recipe-index-img {
+  margin-top: 25px;
+  /*width: 10vw;*/
+}
+
+span {
+  color: #ACACAC;
+}
+
+.icons {
+  display: flex;
+}
+
+.fa-pencil-square-o {
+  font-size: 20px;
+  align-items: flex-end;
+  margin-left: 88%;
+  cursor: pointer;
+}
+/*****************RECIPE SHOW MODAL*******************/
+
+/*#recipe-show {
+  overflow: auto;
+  display: none;
+}*/
+
+.recipe-display {
+  display: flex;
+}
+
 /*=====================================*/
 
 /* media breakpoint */
@@ -330,6 +410,11 @@ login-form h2 {
   .banner-h1 {
     font-size: 1.2em;
     line-height: normal;
+  }
+
+  .recipes-container {
+    display: block;
+    width: 80vw;
   }
 
   #mid {
