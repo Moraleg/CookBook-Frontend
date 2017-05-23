@@ -160,19 +160,19 @@ app.controller('mainController', ['$http', function($http) {
 //========================================
 
   //Get one Recipe
-  this.getOneRecipe = function(id){
-    this.recipe_id = id;
-    console.log("get one recipe ", id);
-    $http({
-      method: 'GET',
-      url: this.url + '/recipes/' + id
-    }).then(function(result){
-      console.log(result);
-      this.recipe = result.data;
-      console.log('==============');
-      console.log(this.recipe);
-    });
-  };
+  // this.getOneRecipe = function(id){
+  //   this.recipe_id = id;
+  //   console.log("get one recipe ", id);
+  //   $http({
+  //     method: 'GET',
+  //     url: this.url + '/recipes/' + id
+  //   }).then(function(result){
+  //     console.log(result);
+  //     this.recipe = result.data;
+  //     console.log('==============');
+  //     console.log(this.recipe);
+  //   });
+  // };
 
   //========================================
   //            RECIPE CREATE
@@ -263,16 +263,16 @@ app.controller('mainController', ['$http', function($http) {
       $('#edit-user-modal').css('display', 'none');
     });
 
-    //Event listener to open/close recipe-show modal
-    $('.recipes').on('click', function () {
-      $('#recipe-show').css('display', 'block');
-    });
-    $('.close').on('click', function() {
-      $('#recipe-show').css('display', 'none');
-    });
+    // //Event listener to open/close recipe-show modal
+    // $('.recipes').on('click', function () {
+    //   $('#recipe-show').css('display', 'block');
+    // });
+    // $('.close').on('click', function() {
+    //   $('#recipe-show').css('display', 'none');
+    // });
 
     //Event listener to open/close edit-recipe modal
-    $('.edit-show').on('click', function () {
+    $('.open-edit').on('click', function () {
       $('#edit-recipe').css('display', 'block');
     });
     $('.close').on('click', function() {
@@ -280,7 +280,7 @@ app.controller('mainController', ['$http', function($http) {
     });
 
     //Event listener to open/close create-recipe modal
-    $('.edit-show').on('click', function () {
+    $('.create').on('click', function () {
       $('#create-recipe').css('display', 'block');
     });
     $('.close').on('click', function() {

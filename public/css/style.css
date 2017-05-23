@@ -220,6 +220,30 @@ label {
 }*/
 
 
+.delete-btn {
+  letter-spacing: 0.46px;
+  color: #F65C5B;
+  border: 2px solid #F65C5B;
+  background-color: white;
+  padding: 8px 47px;
+  border-radius: 20px;
+  text-align: center;
+  display: block;
+  margin: 15px auto;
+  cursor: pointer;
+}
+
+.delete-btn:hover {
+  border: 2px solid #F65C5B;
+  background-color: #F65C5B;
+  color: white;
+  transition: .5s
+}
+
+.ng-binding {
+  text-align: center;
+}
+
 /*****************GET STARTED MODAL*******************/
 
 #signup-modal {
@@ -242,7 +266,7 @@ sign-up-form h2 {
   color: white;
   border: 2px solid #F65C5B;
   background-color: #F65C5B;
-  padding: 10px 20px;
+  padding: 10px 56px;
   border-radius: 20px;
   text-align: center;
   display: block;
@@ -258,7 +282,7 @@ sign-up-form h2 {
 
 .login-anchor {
   text-decoration: none;
-  color: #2BCEC5;
+  color: #F65C5B;
 }
 
 /**********************LOGIN MODAL*******************/
@@ -316,8 +340,8 @@ login-form h2 {
 /**********************EDIT RECIPE MODAL*******************/
 
 #edit-recipe {
-  /*overflow: auto;
-  display: none;*/
+  overflow: auto;
+  display: none;
 }
 
 /*****************RECIPE INDEX MODAL*******************/
@@ -353,12 +377,22 @@ span {
   color: #ACACAC;
 }
 
+.icons {
+  display: flex;
+}
+
+.fa-pencil-square-o {
+  font-size: 20px;
+  align-items: flex-end;
+  margin-left: 88%;
+  cursor: pointer;
+}
 /*****************RECIPE SHOW MODAL*******************/
 
-#recipe-show {
+/*#recipe-show {
   overflow: auto;
   display: none;
-}
+}*/
 
 .recipe-display {
   display: flex;
