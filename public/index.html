@@ -93,11 +93,11 @@
   <!--END LOGIN MODAL-->
 
   <!-- CREATE RECIPE BTN -->
-  <section>
+  <!-- <section>
     <section>
-      <input class="login-btn create" type="submit" value="CREATE RECIPE"/>
+      <a class="login-btn create" href="#">CREATE RECIPE</a>
     </section>
-  </section>
+  </section> -->
   <!-- CREATE RECIPE BTN -->
 
   <!-- RECIPE INDEX -->
@@ -109,7 +109,7 @@
           <i ng-click="activCtrl.edit(activity)" id="open-edit" class="fa fa-pencil-square-o" aria-hidden="true"></i>
         </section>
         <img class="recipe-index-img" src="{{recipe.img}}">
-        <h3 class="recipe-index-title">{{recipe.title}}</h3>
+        <h4 class="recipe-index-title">{{recipe.title}}</h4>
         <small><span>submitted by</span> {{user.username}}</small>
       </div>
     </div>
@@ -161,7 +161,7 @@
         <input class="image" type="text" ng-model="ctrl.formdata.img" placeholder="image"/><br/>
         <label for="directions">Directions:</label>
         <input class="directions" type="text" ng-model="ctrl.formdata.directions" placeholder="directions"/><br/>
-        <input class="login-btn submit" type="submit" value="Create Recipe"/>
+        <input class="login-btn submit" ng-click="user.recipeForm();" type="submit" value="Create Recipe"/>
       </form>
     </section>
   </section>
