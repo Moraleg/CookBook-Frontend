@@ -104,9 +104,10 @@
   <div class="form">
     <!-- <h1>Recipe Controller</h1><br/> -->
     <div class="recipes">
-      <div class="recipes-container" ng-repeat="recipe in ctrl.recipes.recipes track by $index" ng-click = "ctrl.getOneRecipe(recipe.id);">
+
+      <div class="recipes-container open-edit" ng-repeat="recipe in ctrl.recipes.recipes track by $index" ng-click = "ctrl.getOneRecipe(recipe.id);">
         <section class="icons">
-          <i ng-click="activCtrl.edit(activity)" class="fa fa-pencil-square-o open-edit" aria-hidden="true"></i>
+          <i ng-click="activCtrl.edit(activity)" id="open-edit" class="fa fa-pencil-square-o" aria-hidden="true"></i>
         </section>
         <img class="recipe-index-img" src="{{recipe.img}}">
         <h3 class="recipe-index-title">{{recipe.title}}</h3>
@@ -123,7 +124,7 @@
       <!-- <div>
         <a class="close">X</a>
       </div>
-      <!-- Button to close the modal END-->
+      <!-Button to close the modal END-->
         <!--<div><h3>Title: {{recipe.title}}</h3></div>
         <div><img src="{{recipe.img}}"/></div>
         <p>Ingredients: {{recipe.ingredients}}</p>
@@ -134,7 +135,6 @@
   </section> -->
 
   <!-- RECIPE SHOW END -->
-
 
   <!-- CREATE RECIPE -->
   <section id="create-recipe" class="modal" ng-show="!ctrl.token">
