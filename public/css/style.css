@@ -337,6 +337,10 @@ login-form h2 {
   display: none;
 }
 
+.create {
+  display: inline-block;
+}
+
 /**********************EDIT RECIPE MODAL*******************/
 
 #edit-recipe {
@@ -352,7 +356,8 @@ login-form h2 {
 }
 
 .recipes {
-  display: inline-block;
+  display: flex;
+  flex-flow: row wrap;
   text-align: center;
   padding: 1vh 1vw;
 
@@ -369,8 +374,7 @@ login-form h2 {
   padding-top: 30px;
 }
 .recipe-index-img {
-  margin-top: 25px;
-  /*width: 10vw;*/
+  width: 10vw;
 }
 
 span {
