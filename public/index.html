@@ -119,19 +119,23 @@
   <!-- RECIPE SHOW -->
   <!-- <section id="recipe-show" class="form modal">
     <section ng-repeat="info in ctrl.recipes.recipes." class="recipes recipe-display modal-input-box"> -->
-      <!--Button to close modal-->
       <!-- <div>
         <a class="close">X</a>
-      </div>
-      <!- Button to close the modal END-->
+      </div> -->
+       <!-- Button to close the modal END -->
+
+       <!-- ADDED THESE TWO SECTION STARTER TAGS TO REMOVE ERROR -->
+       <!-- <section>
+         <section>
+        <div><h3>Title: {{recipe.title}}</h3></div> -->
+
         <!--<div><h3>Title: {{recipe.title}}</h3></div>
         <div><img src="{{recipe.img}}"/></div>
         <p>Ingredients: {{recipe.ingredients}}</p>
         <p>Description: {{recipe.description}}</p>
         <p>Directions: {{recipe.directions}}</p>
         <p>Servings: {{recipe.servings}}</p>
-    </section>
-  </section> -->
+    </section>-->
 
   <!-- RECIPE SHOW END -->
 
@@ -161,7 +165,7 @@
       </form>
     </section>
   </section>
-  <!--END CREATE RECIPE -->
+  <!--END CREATE RECIPE-->
   <!-- EDIT RECIPE -->
   <section id="edit-recipe" class="modal" ng-show="!ctrl.token">
     <section class="modal-input-box">
