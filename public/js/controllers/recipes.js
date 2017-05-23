@@ -17,6 +17,7 @@ app.controller('mainController', ['$http', function($http) {
   //this.recipes = [];
   this.getrecipe = [];
   // this.recipeId = ();
+  this.token = false;
 
 //========================================
 //            CREATE USER
@@ -60,8 +61,13 @@ app.controller('mainController', ['$http', function($http) {
        },
      }).then(function(response) {//sucess
        console.log(response);
-       this.user = response.data.user;
-       localStorage.setItem('token', JSON.stringify(response.data.token));
+        if (response.data.status == 401) {
+          this.error = "Please try again";
+        } else {
+         this.user = response.data.user;
+         localStorage.setItem('token', JSON.stringify(response.data.token));
+         this.token = true;
+        }
      }.bind(this));
   };
 
@@ -178,7 +184,10 @@ app.controller('mainController', ['$http', function($http) {
     $http({
       method: 'POST',
       url: this.url + '/recipes',
-      data:this.formdata
+      data:this.formdata,
+      headers: {
+        Authorization: JSON.parse(localStorage.getItem('token'))
+      }
     }).then(function (result) {
       console.log('Data from server: ', result);
       this.formdata = {};
@@ -195,7 +204,10 @@ app.controller('mainController', ['$http', function($http) {
     $http({
       method: 'PUT',
       url: this.url + '/recipes/:id',
-      data: this.updatedata
+      data: this.updatedata,
+      headers: {
+        Authorization: JSON.parse(localStorage.getItem('token'))
+      }
     }).then(function (result) {
       console.log('Update data: ', result);
       this.updatedata = {};
@@ -212,6 +224,9 @@ app.controller('mainController', ['$http', function($http) {
     $http({
       method: 'DELETE',
       url: this.url + '/recipes/' + id,
+      headers: {
+        Authorization: JSON.parse(localStorage.getItem('token'))
+      }
     }).then(function(reponse) {
       console.log(response);
       this.notices = response.data;
@@ -219,39 +234,57 @@ app.controller('mainController', ['$http', function($http) {
   };
 
 
-
-
-
   //==============EVENT LISTENERS=========================
-      //Event listener to close sign up modal
-    $('.close').on('click', function () {
-      $('#signup-modal').css('display', 'none');
-    });
 
-    //Event listener to close login modal
-    $('.close').on('click', function() {
-      $('#login-modal').css('display', 'none');
-    });
-
-    //Event listener to close edit-account modal
-    $('.close').on('click', function() {
-      $('#edit-user-modal').css('display', 'none');
-    });
-
-    //Event listener to open sign-up modal
+    //Event listener to open/close sign-up modal
     $('.signup').on('click', function () {
       $('#signup-modal').css('display', 'block');
     });
 
-    //Event listener to open login modal
+    $('.close').on('click', function () {
+      $('#signup-modal').css('display', 'none');
+    });
+
+    //Event listener to open/close login modal
     $('.login').on('click', function () {
       $('#login-modal').css('display', 'block');
     });
 
-    //Event listener to open edit-accout modal
+    $('.close').on('click', function() {
+      $('#login-modal').css('display', 'none');
+    });
+
+
+    //Event listener to open/close edit-accout modal
     $('.edit-account').on('click', function () {
       $('#edit-user-modal').css('display', 'block');
     });
+    $('.close').on('click', function() {
+      $('#edit-user-modal').css('display', 'none');
+    });
 
+    //Event listener to open/close recipe-show modal
+    $('.recipes').on('click', function () {
+      $('#recipe-show').css('display', 'block');
+    });
+    $('.close').on('click', function() {
+      $('#recipe-show').css('display', 'none');
+    });
+
+    //Event listener to open/close edit-recipe modal
+    $('.edit-show').on('click', function () {
+      $('#edit-recipe').css('display', 'block');
+    });
+    $('.close').on('click', function() {
+      $('#edit-recipe').css('display', 'none');
+    });
+
+    //Event listener to open/close create-recipe modal
+    $('.edit-show').on('click', function () {
+      $('#create-recipe').css('display', 'block');
+    });
+    $('.close').on('click', function() {
+      $('#create-recipe').css('display', 'none');
+    });
 
   }]); //End mainController

@@ -20,11 +20,11 @@
     <h2 class="logo">HUNGRY FOR MORE</h2>
     <nav role="navigation" class="cl-effect-1" id="cl-effect-1">
       <a href="#">ABOUT</a>
-      <a class="login" href="#">LOGIN</a>
-      <a id="open-signup" class="signup" href="#">SIGN UP</a>
+      <a ng-show="!ctrl.token" class="login" href="#">LOGIN</a>
+      <a ng-show="!ctrl.token" id="open-signup" class="signup" href="#">SIGN UP</a>
       <a href="#">RECIPES</a>
-      <a class="edit-account" href="#">EDIT ACCOUNT</a>
-      <a href="#" ng-click="ctrl.logout()">LOG OUT</a>
+      <a ng-show="ctrl.token" class="edit-account" href="#">EDIT ACCOUNT</a>
+      <a ng-show="ctrl.token" href="#" ng-click="ctrl.logout()">LOG OUT</a>
     </nav>
   </header>
   <!--END HEADER-->
@@ -92,18 +92,39 @@
   <!--END LOGIN MODAL-->
   <!-- RECIPE INDEX -->
   <div class="form">
-    <h1>Recipe Controller</h1> <br/>
-    <div class="recipes" >
-      <ul ng-repeat="recipe in ctrl.recipes.recipes">
-        <li><h3>Title: {{recipe.title}}</h3></li>
-        <li><p>Description: {{recipe.description}}</p></li>
-        <li><p>User Id: {{ recipe.user_id }}</p></li>
-        <li><p>Recipe Id: {{ recipe.id }}</p></li>
-      </ul>
+    <!-- <h1>Recipe Controller</h1><br/> -->
+    <div class="recipes">
+      <div class="recipes-container" ng-repeat="recipe in ctrl.recipes.recipes track by $index" ng-click = "ctrl.getOneRecipe(recipe.id);">
+        <img class="recipe-index-img" src="{{recipe.img}}">
+        <h3 class="recipe-index-title">{{recipe.title}}</h3>
+        <small><span>submitted by</span> {{user.username}}</small>
+      </div>
     </div>
   </div>
+  <!-- RECIPE INDEX END -->
+
+  <!-- RECIPE SHOW -->
+  <section id="recipe-show" class="form modal">
+    <section class=" recipes recipe-display modal-input-box">
+      <!--Button to close modal-->
+      <div>
+        <a class="close">X</a>
+      </div>
+      <!-- Button to close the modal END-->
+        <div><h3>Title: {{recipe.title}}</h3></div>
+        <div><img src="{{recipe.img}}"/></div>
+        <p>Ingredients: {{recipe.ingredients}}</p>
+        <p>Description: {{recipe.description}}</p>
+        <p>Directions: {{recipe.directions}}</p>
+        <p>Servings: {{recipe.servings}}</p>
+    </section>
+  </section>
+
+  <!-- RECIPE SHOW END -->
+
+
   <!-- CREATE RECIPE -->
-  <section id="create-recipe" class="modal">
+  <section id="create-recipe" class="modal" ng-show="!ctrl.token">
     <section class="modal-input-box">
       <div>
         <a class="close">X</a>
@@ -130,12 +151,15 @@
   </section>
   <!--END CREATE RECIPE -->
   <!-- EDIT RECIPE -->
-  <section id="edit-recipe" class="modal">
+  <section id="edit-recipe" class="modal" ng-show="!ctrl.token">
     <section class="modal-input-box">
-      <div class="legend-container">
-        <legend><h2>Edit Recipe</h2></legend>
+      <div>
+        <a class="close">X</a>
       </div>
       <form ng-submit="ctrl.updateRecipe(id)">
+        <div class="legend-container">
+          <legend><h2>Edit Recipe</h2></legend>
+        </div>
         <label for="title">Title:</label>
         <input class="title" type="text" ng-model="ctrl.formdata.title" placeholder="title"/><br/>
         <label for="ingredients">Ingredients:</label>

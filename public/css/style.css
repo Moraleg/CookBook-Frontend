@@ -1,3 +1,5 @@
+@import url(//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css);
+
 body {
   margin: 0;
   padding: 0;
@@ -314,8 +316,52 @@ login-form h2 {
 /**********************EDIT RECIPE MODAL*******************/
 
 #edit-recipe {
+  /*overflow: auto;
+  display: none;*/
+}
+
+/*****************RECIPE INDEX MODAL*******************/
+
+.form {
+  margin-top: 25px;
+  display: flex;
+}
+
+.recipes {
+  display: inline-block;
+  text-align: center;
+  padding: 1vh 1vw;
+
+}
+
+.recipes-container {
+  width: 25%;
+  height: 200px;
+  margin: 14px 40px;
+  background-color: white;
+  border-radius: 4px;
+  display: inline-block;
+  text-align: center;
+  padding-top: 30px;
+}
+.recipe-index-img {
+  margin-top: 25px;
+  /*width: 10vw;*/
+}
+
+span {
+  color: #ACACAC;
+}
+
+/*****************RECIPE SHOW MODAL*******************/
+
+#recipe-show {
   overflow: auto;
   display: none;
+}
+
+.recipe-display {
+  display: flex;
 }
 
 /*=====================================*/
@@ -330,6 +376,11 @@ login-form h2 {
   .banner-h1 {
     font-size: 1.2em;
     line-height: normal;
+  }
+
+  .recipes-container {
+    display: block;
+    width: 80vw;
   }
 
   #mid {
