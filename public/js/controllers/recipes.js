@@ -19,6 +19,8 @@ app.controller('mainController', ['$http', function($http) {
   // this.recipeId = ();
   this.token = false;
 
+  this.showRecipeId = "";
+
 //========================================
 //            CREATE USER
 //========================================
@@ -84,7 +86,7 @@ app.controller('mainController', ['$http', function($http) {
         Authorization: JSON.parse(localStorage.getItem('token'))
       }
     }).then(function(response) {
-      console.log(reponse);
+      console.log(response);
 
     }.bind(this));
   };//End updateUser()
@@ -98,10 +100,13 @@ app.controller('mainController', ['$http', function($http) {
     this.user_id = id;
     $http({
       method: 'DELETE',
-      url: this.url + '/users/' + id
+      url: this.url + '/users/' + id,
+      headers: {
+          Authorization: JSON.parse(localStorage.getItem('token'))
+      }
     }).then(function(reponse) {
       console.log(response);
-      this.user = response.data;
+      //this.user = response.data;
       this.logout();
     }.bind(this));
   };
@@ -134,8 +139,18 @@ app.controller('mainController', ['$http', function($http) {
   //   }.bind(this))
   // }; //End getUsers
 
-
-// Recipe controllers
+  this.getUserId = function(){
+      $http({
+          method:"POST",
+          url: this.url + "/userId",
+          headers: {
+              Authorization: JSON.parse(localStorage.getItem("token"))
+          }
+      }).then(function(response){//success
+        //this also might be a set to the userid so we probably can get rid of one or the other
+              this.id = response.data.id;
+          }.bind(this));
+  };
 
 //========================================
 //            RECIPE INDEX
@@ -159,37 +174,50 @@ app.controller('mainController', ['$http', function($http) {
 //========================================
 
   //Get one Recipe
-  // this.getOneRecipe = function(id){
-  //   this.recipe_id = id;
-  //   console.log("get one recipe ", id);
-  //   $http({
-  //     method: 'GET',
-  //     url: this.url + '/recipes/' + id
-  //   }).then(function(result){
-  //     console.log(result);
-  //     this.recipe = result.data;
-  //     console.log('==============');
-  //     console.log(this.recipe);
-  //   });
-  // };
+  this.getOneRecipe = function(index){
+    //this.recipe_id = id;
+    this.showRecipe = index;
+    // console.log("get one recipe ", index);
+    // $http({
+    //   method: 'GET',
+    //   url: this.url + '/recipes/' + id
+    // }).then(function(result){
+    //   console.log(result);
+    //   this.recipe = result.data;
+    //   console.log('==============');
+    //   console.log(this.recipe);
+    //});
+  };
 
   //========================================
   //            RECIPE CREATE
   //========================================
   // function to add recipes to the data base
-  this.recipeForm = function() {
+  this.recipeForm = function(recipe, id) {
+    recipe.user_id = id;
     console.log("recipeForm function ...");
     console.log('Recipe Form Data: ', this.formdata);
     $http({
       method: 'POST',
       url: this.url + '/recipes',
-      data:this.formdata,
+      data:  {
+        recipe : { //this.formdata
+            title: recipe.title,
+            ingredients: recipe.ingredients,
+            description: recipe.description,
+            directions: recipe.directions,
+            servings: recipe.servings,
+            img: recipe.img
+          },
+      },
+    //},
       headers: {
         Authorization: JSON.parse(localStorage.getItem('token'))
       }
     }).then(function (result) {
       console.log('Data from server: ', result);
       this.formdata = {};
+      this.getRecipes();
     }.bind(this));
   }; //end recipe form
 
