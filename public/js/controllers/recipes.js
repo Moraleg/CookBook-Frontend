@@ -176,7 +176,8 @@ app.controller('mainController', ['$http', function($http) {
   //Get one Recipe
   this.getOneRecipe = function(index){
     //this.recipe_id = id;
-    this.showRecipe = index;
+    console.log(index);
+    this.showRecipeId = index;
     // console.log("get one recipe ", index);
     // $http({
     //   method: 'GET',
@@ -194,21 +195,22 @@ app.controller('mainController', ['$http', function($http) {
   //========================================
   // function to add recipes to the data base
   this.recipeForm = function(recipe, id) {
-    recipe.user_id = id;
+    this.user_id = id;
+    console.log(id);
     console.log("recipeForm function ...");
     console.log('Recipe Form Data: ', this.formdata);
     $http({
       method: 'POST',
       url: this.url + '/recipes',
       data:  {
-        recipe : { //this.formdata
+        //recipe : { //this.formdata
             title: recipe.title,
             ingredients: recipe.ingredients,
             description: recipe.description,
             directions: recipe.directions,
             servings: recipe.servings,
             img: recipe.img
-          },
+          //},
       },
     //},
       headers: {
@@ -225,12 +227,12 @@ app.controller('mainController', ['$http', function($http) {
   //            RECIPE EDIT
   //========================================
 
-  this.updateRecipe = function(id) {
+  this.updateRecipe = function(recipe, id) {
     console.log('This is the update route');
     console.log('Update Form Data: ',this.updatedata);
     $http({
       method: 'PUT',
-      url: this.url + '/recipes/' + id,
+      url: this.url + '/recipes/' + this.showRecipeId.id,
       data: this.updatedata,
       headers: {
         Authorization: JSON.parse(localStorage.getItem('token'))

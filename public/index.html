@@ -105,7 +105,7 @@
   <div class="form">
     <!-- <h1>Recipe Controller</h1><br/> -->
     <div class="recipes" id="open-edit">
-      <div ng-show="ctrl.token" class="recipes-container" ng-repeat="recipe in ctrl.recipes track by $index" ng-click="ctrl.getOneRecipe($index);">
+      <div ng-show="ctrl.token" class="recipes-container" ng-repeat="recipe in ctrl.recipes track by $index" ng-click="ctrl.getOneRecipe(recipe);">
         <section class="icons">
           <i ng-click="ctrl.edit(recipe)" class="fa fa-pencil-square-o" aria-hidden="true"></i>
         </section>
@@ -146,7 +146,7 @@
       <div>
         <a class="close">X</a>
       </div>
-      <form ng-submit="ctrl.recipeForm()">
+      <form ng-submit="ctrl.recipeForm(ctrl.formdata, ctrl.user.id)">
         <div class="legend-container">
           <legend><h2>Create Recipe</h2></legend>
         </div>
@@ -173,12 +173,12 @@
       <div>
         <a class="close">X</a>
       </div>
-      <form ng-submit="ctrl.updateRecipe(recipe, id)">
+      <form ng-submit="ctrl.updateRecipe(recipe, recipe.id)">
         <div class="legend-container">
           <legend><h2>Edit Recipe</h2></legend>
         </div>
         <label for="title">Title:</label>
-        <input class="title" type="text" ng-model="recipe.title" placeholder="title" value="{{ctrl.recipe.title}}"/><br/>
+        <input class="title" type="text" ng-model="recipe.title" placeholder="{{ctrl.recipe.title}}" value="{{ctrl.recipe.title}}"/><br/>
         <label for="ingredients">Ingredients:</label>
         <input class="ingredients" type="text" ng-model="recipe.ingredients" placeholder="ingredients" value="{{ctrl.recipe.ingredients}}"/><br/>
         <label for="description">Description:</label>
