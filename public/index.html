@@ -104,7 +104,7 @@
   <div class="form">
     <!-- <h1>Recipe Controller</h1><br/> -->
     <div class="recipes">
-      <div class="recipes-container open-edit" ng-repeat="recipe in ctrl.recipes.recipes track by $index" ng-click = "ctrl.getOneRecipe(recipe.id);">
+      <div class="recipes-container open-edit" ng-repeat="recipe in ctrl.recipes track by $index" ng-click = "ctrl.getOneRecipe(recipe.id);">
         <section class="icons">
           <i ng-click="activCtrl.edit(activity)" id="open-edit" class="fa fa-pencil-square-o" aria-hidden="true"></i>
         </section>
