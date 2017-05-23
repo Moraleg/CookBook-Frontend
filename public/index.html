@@ -1,185 +1,201 @@
 <!DOCTYPE html>
 <html ng-app="cookbook_app">
 <head>
-    <meta charset="utf-8">
-    <title>Cookbook</title>
-    <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g=" crossorigin="anonymous"></script>
-    <!-- angular -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
-    <!-- loginlogout js file -->
-    <script type="text/javascript" src="/js/controllers/recipes.js"></script>
-    <!-- recipes js file -->
-    <!-- <script type="text/javascript" src="/js/controllers/recipes.js"></script> -->
-    <!-- our css file(s) -->
-    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+  <meta charset="utf-8">
+  <title>Cookbook</title>
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g=" crossorigin="anonymous"></script>
+  <!-- angular -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
+  <!-- loginlogout js file -->
+  <script type="text/javascript" src="/js/controllers/recipes.js"></script>
+  <!-- recipes js file -->
+  <!-- <script type="text/javascript" src="/js/controllers/recipes.js"></script> -->
+  <!-- our css file(s) -->
+  <link rel="stylesheet" type="text/css" href="/css/style.css" />
 </head>
 <body ng-controller="mainController as ctrl">
-    <!-- HEADER -->
-    <header>
-        <h2 class="logo">HUNGRY FOR MORE</h2>
-        <nav role="navigation" class="cl-effect-1" id="cl-effect-1">
-            <a href="#">ABOUT</a>
-            <a class="login" href="#">LOGIN</a>
-            <a id="open-signup" class="signup" href="#" ng-click="ctrl.createAccount()">SIGN UP</a>
-            <a href="#">RECIPES</a>
-            <a class="edit-account" href="#">EDIT ACCOUNT</a>
-            <a href="#" ng-click="ctrl.logout()">LOG OUT</a>
-        </nav>
-    </header>
-    <!--END HEADER-->
-
-    <!--MAIN PAGE-->
-    <div>
-        <section class="banner">
-            <h1 class="banner-h1">Browse hundreds of recipe ideas to get <br/> yourself back in the  kitchen</h1>
-            <a class="browse" href="#" ng-click="">BROWSE RECIPES</a>
-        </section>
-        <main class="main-content">
-            <section class="mid">
-                <p>BENEFIT</p>
-            </section>
-            <section class="mid" id="mid">
-                <p>BENEFIT</p>
-            </section>
-            <section class="mid">
-                <p>BENEFIT</p>
-            </section>
-        </main>
-    </div>
-    <!--END MAIN PAGE-->
-
-    <!--CREATE ACCOUNT MODAL-->
-    <section id="signup-modal" class="modal">
-        <section class="modal-input-box">
-            <!--Button to close modal-->
-            <div>
-                <a class="close">X</a>
-            </div>
-            <!-- Button to close the modal END-->
-            <form ng-submit="ctrl.createAccount(user)">
-                <div class="legend-container">
-                    <legend align="center"><h2>Create Account</h2></legend>
-                </div>
-                <input class="username" type="text" ng-model="user.username" placeholder="username"/><br/>
-                <input class="password" type="password" ng-model="user.password" placeholder="password" required min-length="8"/><br/>
-                <input class="create-account-btn" type="submit" value="Sign Up"/>
-            </form>
-        </section>
+  <!-- HEADER -->
+  <header>
+    <h2 class="logo">HUNGRY FOR MORE</h2>
+    <nav role="navigation" class="cl-effect-1" id="cl-effect-1">
+      <a href="#">ABOUT</a>
+      <a ng-show="!ctrl.token" class="login" href="#">LOGIN</a>
+      <a ng-show="!ctrl.token" id="open-signup" class="signup" href="#">SIGN UP</a>
+      <a href="#">RECIPES</a>
+      <a ng-show="ctrl.token" class="edit-account" href="#">EDIT ACCOUNT</a>
+      <a ng-show="ctrl.token" href="#" ng-click="ctrl.logout()">LOG OUT</a>
+    </nav>
+  </header>
+  <!--END HEADER-->
+  <!--MAIN PAGE-->
+  <div>
+    <section class="banner">
+      <h1 class="banner-h1">Browse hundreds of recipe ideas to get <br/> yourself back in the  kitchen</h1>
+      <a class="browse" href="#" ng-click="">BROWSE RECIPES</a>
     </section>
-    <!--END CREATE ACCOUNT MODAL-->
-
-    <!--LOGIN MODAL-->
-    <section id="login-modal" class="modal">
-        <section class="modal-input-box">
-            <!--Button to close modal-->
-            <div>
-                <a class="close">X</a>
-            </div>
-            <!-- Button to close the modal END-->
-            <form ng-submit="ctrl.login(user)">
-                <div class="legend-container">
-                    <legend><h2>Login</h2></legend>
-                </div>
-                <label for="username">Username:</label>
-                <input class="username" type="text" ng-model="user.username" placeholder="username"/><br/>
-                <label for="password">Password:</label>
-                <input class="password" type="password" ng-model="user.password" placeholder="password" required min-length="8"/><br/>
-                <input class="login-btn" ng-click="user.login()" type="submit"/>
-            </form>
-            <p>Logged in username: {{ ctrl.user.username }} </p>
-            <div>{{ctrl.error}}</div>
-            <!-- removed ng repeat for user -->
-        </section>
-    </section>
-    <!--END LOGIN MODAL-->
-
-    <!-- RECIPE INDEX -->
-    <div class="form">
-        <h1>Recipe Controller</h1> <br/>
-        <div class="recipes" >
-            <ul ng-repeat="recipe in ctrl.recipes.recipes">
-                <li><h3>Title: {{recipe.title}}</h3></li>
-                <li><p>Description: {{recipe.description}}</p></li>
-                <li><p>User Id: {{ recipe.user_id }}</p></li>
-                <li><p>Recipe Id: {{ recipe.id }}</p></li>
-            </ul>
+    <main class="main-content">
+      <section class="mid">
+        <p>BENEFIT</p>
+      </section>
+      <section class="mid" id="mid">
+        <p>BENEFIT</p>
+      </section>
+      <section class="mid">
+        <p>BENEFIT</p>
+      </section>
+    </main>
+  </div>
+  <!--END MAIN PAGE-->
+  <!--CREATE ACCOUNT MODAL-->
+  <section id="signup-modal" class="modal">
+    <section class="modal-input-box">
+      <!--Button to close modal-->
+      <div>
+        <a class="close">X</a>
+      </div>
+      <!-- Button to close the modal END-->
+      <form ng-submit="ctrl.createAccount(user)">
+        <div class="legend-container">
+          <legend align="center"><h2>Create Account</h2></legend>
         </div>
+        <input class="username" type="text" ng-model="user.username" placeholder="username"/><br/>
+        <input class="password" type="password" ng-model="user.password" placeholder="password" required min-length="8"/><br/>
+        <input class="create-account-btn" type="submit" value="Sign Up"/>
+      </form>
+    </section>
+  </section>
+  <!--END CREATE ACCOUNT MODAL-->
+  <!--LOGIN MODAL-->
+  <section id="login-modal" class="modal">
+    <section class="modal-input-box">
+      <!--Button to close modal-->
+      <div>
+        <a class="close">X</a>
+      </div>
+      <!-- Button to close the modal END-->
+      <form ng-submit="ctrl.login(user)">
+        <div class="legend-container">
+          <legend><h2>Login</h2></legend>
+        </div>
+        <label for="username">Username:</label>
+        <input class="username" type="text" ng-model="user.username" placeholder="username"/><br/>
+        <label for="password">Password:</label>
+        <input class="password" type="password" ng-model="user.password" placeholder="password" required min-length="8"/><br/>
+        <input class="login-btn" ng-click="user.login()" type="submit"/>
+      </form>
+      <p>Logged in username: {{ ctrl.user.username }} </p>
+      <div>{{ctrl.error}}</div>
+      <!-- removed ng repeat for user -->
+    </section>
+  </section>
+  <!--END LOGIN MODAL-->
+  <!-- RECIPE INDEX -->
+  <div class="form">
+    <!-- <h1>Recipe Controller</h1><br/> -->
+    <div class="recipes">
+      <div class="recipes-container open-edit" ng-repeat="recipe in ctrl.recipes.recipes track by $index" ng-click = "ctrl.getOneRecipe(recipe.id);">
+        <section class="icons">
+          <i ng-click="activCtrl.edit(activity)" id="open-edit" class="fa fa-pencil-square-o" aria-hidden="true"></i>
+        </section>
+        <img class="recipe-index-img" src="{{recipe.img}}">
+        <h3 class="recipe-index-title">{{recipe.title}}</h3>
+        <small><span>submitted by</span> {{user.username}}</small>
+      </div>
     </div>
-
-    <!-- CREATE RECIPE -->
-    <section id="create-recipe" class="modal">
-        <section class="modal-input-box">
-            <div>
-                <a class="close">X</a>
-            </div>
-            <form ng-submit="ctrl.recipeForm()">
-                <div class="legend-container">
-                    <legend><h2>Create Recipe</h2></legend>
-                </div>
-                <label for="title">Title:</label>
-                <input class="title" type="text" ng-model="ctrl.formdata.title" placeholder="title"/><br/>
-                <label for="ingredients">Ingredients:</label>
-                <input class="ingredients" type="text" ng-model="ctrl.formdata.ingredients" placeholder="ingredients"/><br/>
-                <label for="description">Description:</label>
-                <input class="description" type="text" ng-model="ctrl.formdata.description" placeholder="description"/><br/>
-                <label for="servings">Servings:</label>
-                <input class="servings" type="text" ng-model="ctrl.formdata.servings" placeholder="servings"/><br/>
-                <label for="Image">Image:</label>
-                <input class="image" type="text" ng-model="ctrl.formdata.img" placeholder="image"/><br/>
-                <label for="directions">Directions:</label>
-                <input class="directions" type="text" ng-model="ctrl.formdata.directions" placeholder="directions"/><br/>
-                <input class="login-btn submit" type="submit" value="Create Recipe"/>
-            </form>
-        </section>
+  </div>
+  <!-- RECIPE INDEX END -->
+  <!-- RECIPE SHOW -->
+  <!-- <section id="recipe-show" class="form modal">
+    <section ng-repeat="info in ctrl.recipes.recipes." class="recipes recipe-display modal-input-box"> -->
+      <!--Button to close modal-->
+      <!-- <div>
+        <a class="close">X</a>
+      </div>
+      <!-- Button to close the modal END-->
+        <div><h3>Title: {{recipe.title}}</h3></div>
+        <div><img src="{{recipe.img}}"/></div>
+        <p>Ingredients: {{recipe.ingredients}}</p>
+        <p>Description: {{recipe.description}}</p>
+        <p>Directions: {{recipe.directions}}</p>
+        <p>Servings: {{recipe.servings}}</p>
     </section>
-    <!--END CREATE RECIPE -->
-
-    <!-- EDIT RECIPE -->
-    <section id="edit-recipe" class="modal">
-        <section class="modal-input-box">
-            <div class="legend-container">
-                <legend><h2>Edit Recipe</h2></legend>
-            </div>
-            <form ng-submit="ctrl.updateRecipe(id)">
-                <label for="title">Title:</label>
-                <input class="title" type="text" ng-model="ctrl.formdata.title" placeholder="title"/><br/>
-                <label for="ingredients">Ingredients:</label>
-                <input class="ingredients" type="text" ng-model="ctrl.formdata.ingredients" placeholder="ingredients"/><br/>
-                <label for="description">Description:</label>
-                <input class="description" type="text" ng-model="ctrl.formdata.description" placeholder="description"/><br/>
-                <label for="servings">Servings:</label>
-                <input class="servings" type="text" ng-model="ctrl.formdata.servings" placeholder="servings"/><br/>
-                <label for="Image">Image:</label>
-                <input class="image" type="text" ng-model="ctrl.formdata.img" placeholder="image"/><br/>
-                <label for="directions">Directions:</label>
-                <input class="directions" type="text" ng-model="ctrl.formdata.directions" placeholder="directions"/><br/>
-                <input class="login-btn submit" type="submit" value="Edit Recipe"/>
-            </form>
-            <button ng-click="ctrl.deleteRecipe(id)">Delete Recipe</button>
-        </section>
+  </section> -->
+  <!-- RECIPE SHOW END -->
+  <!-- CREATE RECIPE -->
+  <section id="create-recipe" class="modal" ng-show="!ctrl.token">
+    <section class="modal-input-box">
+      <div>
+        <a class="close">X</a>
+      </div>
+      <form ng-submit="ctrl.recipeForm()">
+        <div class="legend-container">
+          <legend><h2>Create Recipe</h2></legend>
+        </div>
+        <label for="title">Title:</label>
+        <input class="title" type="text" ng-model="ctrl.formdata.title" placeholder="title"/><br/>
+        <label for="ingredients">Ingredients:</label>
+        <input class="ingredients" type="text" ng-model="ctrl.formdata.ingredients" placeholder="ingredients"/><br/>
+        <label for="description">Description:</label>
+        <input class="description" type="text" ng-model="ctrl.formdata.description" placeholder="description"/><br/>
+        <label for="servings">Servings:</label>
+        <input class="servings" type="text" ng-model="ctrl.formdata.servings" placeholder="servings"/><br/>
+        <label for="Image">Image:</label>
+        <input class="image" type="text" ng-model="ctrl.formdata.img" placeholder="image"/><br/>
+        <label for="directions">Directions:</label>
+        <input class="directions" type="text" ng-model="ctrl.formdata.directions" placeholder="directions"/><br/>
+        <input class="login-btn submit" type="submit" value="Create Recipe"/>
+      </form>
     </section>
-    <!--EDIT RECIPE END-->
-
-    <!--USER EDIT/ DELETE MODAL-->
-    <section id="edit-user-modal" class="modal">
-        <section class="modal-input-box">
-            <!--Button to close modal-->
-            <div>
-                <a class="close">X</a>
-            </div>
-            <!-- Button to close the modal END-->
-            <form ng-submit="ctrl.createAccount(user)">
-                <div class="legend-container">
-                    <legend align="center"><h2>Edit Account</h2></legend>
-                </div>
-                <input class="username" type="text" ng-model="user.username" placeholder="username"/><br/>
-                <input class="password" type="password" ng-model="user.password" placeholder="password" required min-length="8"/><br/>
-                <input class="create-account-btn" type="submit" value="Edit Account"/>
-            </form>
-            <button ng-click="ctrl.deleteAccount()">Delete Account</button>
-        </section>
+  </section>
+  <!--END CREATE RECIPE -->
+  <!-- EDIT RECIPE -->
+  <section id="edit-recipe" class="modal" ng-show="!ctrl.token">
+    <section class="modal-input-box">
+      <div>
+        <a class="close">X</a>
+      </div>
+      <form ng-submit="ctrl.updateRecipe(id)">
+        <div class="legend-container">
+          <legend><h2>Edit Recipe</h2></legend>
+        </div>
+        <label for="title">Title:</label>
+        <input class="title" type="text" ng-model="ctrl.formdata.title" placeholder="title"/><br/>
+        <label for="ingredients">Ingredients:</label>
+        <input class="ingredients" type="text" ng-model="ctrl.formdata.ingredients" placeholder="ingredients"/><br/>
+        <label for="description">Description:</label>
+        <input class="description" type="text" ng-model="ctrl.formdata.description" placeholder="description"/><br/>
+        <label for="servings">Servings:</label>
+        <input class="servings" type="text" ng-model="ctrl.formdata.servings" placeholder="servings"/><br/>
+        <label for="Image">Image:</label>
+        <input class="image" type="text" ng-model="ctrl.formdata.img" placeholder="image"/><br/>
+        <label for="directions">Directions:</label>
+        <input class="directions" type="text" ng-model="ctrl.formdata.directions" placeholder="directions"/><br/>
+        <input class="login-btn submit" type="submit" value="Edit Recipe"/>
+      </form>
+      <button ng-click="ctrl.deleteRecipe(id)">Delete Recipe</button>
     </section>
-    <!--END USER EDIT/DELETE MODAL-->
+  </section>
+  <!--EDIT RECIPE END-->
+  <!--USER EDIT/ DELETE MODAL-->
+  <section id="edit-user-modal" class="modal">
+    <section class="modal-input-box">
+      <!--Button to close modal-->
+      <div>
+        <a class="close">X</a>
+      </div>
+      <!-- Button to close the modal END-->
+      <form ng-submit="ctrl.createAccount(user)">
+        <div class="legend-container">
+          <legend align="center"><h2>Edit Account</h2></legend>
+        </div>
+        <input class="username" type="text" ng-model="user.username" placeholder="username"/><br/>
+        <input class="password" type="password" ng-model="user.password" placeholder="password" required min-length="8"/><br/>
+        <input class="create-account-btn" type="submit" value="Edit Account"/>
+      </form>
+      <button ng-click="ctrl.deleteAccount()">Delete Account</button>
+    </section>
+  </section>
+  <!--END USER EDIT/DELETE MODAL-->
 </body>
 </html>
