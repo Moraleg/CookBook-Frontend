@@ -227,7 +227,10 @@ app.controller('mainController', ['$http', function($http) {
     $http({
       method: 'POST',
       url: this.url + '/recipes',
-      data:this.formdata
+      data:this.formdata,
+      headers: {
+        Authorization: JSON.parse(localStorage.getItem('token'))
+      }
     }).then(function (result) {
       console.log('Data from server: ', result);
       this.formdata = {};
