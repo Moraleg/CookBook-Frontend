@@ -102,11 +102,17 @@
         <div class="recipes" >
             <ul ng-repeat="recipe in ctrl.recipes" ng-click = "ctrl.getOneRecipe(recipe.id)">
                 <li><h3> Title:{{recipe.title }}</h3></li>
+                
+                <li><h3> Title:{{recipe.title }}</h3></li>
                 <li><p>Description: {{recipe.description}}</p></li>
                 <li><p>User Id: {{ recipe.user_id }}</p></li>
                 <li><p>Recipe Id: {{ recipe.id }}</p></li>
             </ul>
         </div>
+    </div>
+    <div id="showrecipe">
+        <div ng-include="partials/recipeshowpage.html"></div>
+        <main ng-view></main>
     </div>
 
     <!-- CREATE RECIPE -->
