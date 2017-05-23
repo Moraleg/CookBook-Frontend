@@ -23,7 +23,7 @@
       <a ng-show="!ctrl.token" class="login" href="#">LOGIN</a>
       <a ng-show="!ctrl.token" id="open-signup" class="signup" href="#">SIGN UP</a>
       <a ng-show="ctrl.token" class="create-recipe-open" href="#">CREATE RECIPES</a>
-      <a ng-show="ctrl.token" class="edit-account" href="#">EDIT ACCOUNT</a>
+      <a ng-show="ctrl.token" ng-click="ctrl.getUserId(ctrl.user.id)" class="edit-account" href="#">EDIT ACCOUNT</a>
       <a ng-show="ctrl.token" href="#" ng-click="ctrl.logout()">LOG OUT</a>
     </nav>
   </header>
@@ -94,11 +94,11 @@
   <!--END LOGIN MODAL-->
 
   <!-- CREATE RECIPE BTN -->
-  <section>
+  <!-- <section>
     <section>
       <a class="login-btn create" href="#">CREATE RECIPE</a>
     </section>
-  </section>
+  </section> -->
   <!-- CREATE RECIPE BTN -->
 
   <!-- RECIPE INDEX -->
@@ -111,7 +111,7 @@
         </section>
         <img class="recipe-index-img" src="{{recipe.img}}">
         <h4 class="recipe-index-title">{{recipe.title}}</h4>
-        <small><span>submitted by</span> {{user.username}}</small>
+        <small><span>submitted by</span> {{}}</small>
       </div>
     </div>
   </div>
@@ -167,13 +167,15 @@
     </section>
   </section>
   <!--END CREATE RECIPE-->
+
+
   <!-- EDIT RECIPE -->
   <section id="edit-recipe" class="modal">
     <section class="modal-input-box">
       <div>
         <a class="close">X</a>
       </div>
-      <form ng-submit="ctrl.updateRecipe(recipe, recipe.id)">
+      <form ng-submit="ctrl.updateRecipe($index)">
         <div class="legend-container">
           <legend><h2>Edit Recipe</h2></legend>
         </div>
@@ -191,10 +193,12 @@
         <input class="directions" type="text" ng-model="ctrl.recipe.directions" placeholder="directions" value="{{ctrl.recipe.directions}}" /><br/>
         <input class="login-btn submit" type="submit" value="Edit Recipe"/>
       </form>
-      <button class="delete-btn" ng-click="ctrl.deleteRecipe(id)">Delete Recipe</button>
+      <button class="delete-btn" ng-click="ctrl.deleteRecipe()">Delete Recipe</button>
     </section>
   </section>
   <!--EDIT RECIPE END-->
+
+
   <!--USER EDIT/ DELETE MODAL-->
   <section id="edit-user-modal" class="modal">
     <section class="modal-input-box">

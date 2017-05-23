@@ -87,7 +87,7 @@ app.controller('mainController', ['$http', function($http) {
       }
     }).then(function(response) {
       console.log(response);
-
+      this.getUserId(response.data._id);
     }.bind(this));
   };//End updateUser()
 
@@ -139,10 +139,10 @@ app.controller('mainController', ['$http', function($http) {
   //   }.bind(this))
   // }; //End getUsers
 
-  this.getUserId = function(){
+  this.getUserId = function(id){
       $http({
           method:"POST",
-          url: this.url + "/userId",
+          url: this.url + "/users/" + id,
           headers: {
               Authorization: JSON.parse(localStorage.getItem("token"))
           }
@@ -227,7 +227,7 @@ app.controller('mainController', ['$http', function($http) {
   //            RECIPE EDIT
   //========================================
 
-  this.updateRecipe = function(recipe, id) {
+  this.updateRecipe = function($index) {
     console.log('This is the update route');
     console.log('Update Form Data: ',this.updatedata);
     $http({
@@ -247,7 +247,7 @@ app.controller('mainController', ['$http', function($http) {
   //            RECIPE DELETE
   //========================================
 
-  this.deleteRecipe = function(id) {
+  this.deleteRecipe = function() {
     console.log('delete clicked');
     console.log(id);
     $http({
