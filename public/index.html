@@ -63,6 +63,7 @@
         <input class="password" type="password" ng-model="user.password" placeholder="password" required min-length="8"/><br/>
         <input class="create-account-btn" type="submit" value="Sign Up"/>
       </form>
+      <p class="modal-text">Already have an account? <a class="login-anchor login">Login Here</a></p>
     </section>
   </section>
   <!--END CREATE ACCOUNT MODAL-->
@@ -90,6 +91,15 @@
     </section>
   </section>
   <!--END LOGIN MODAL-->
+
+  <!-- CREATE RECIPE BTN -->
+  <section>
+    <section>
+      <input class="login-btn create" type="submit" value="CREATE RECIPE"/>
+    </section>
+  </section>
+  <!-- CREATE RECIPE BTN -->
+
   <!-- RECIPE INDEX -->
   <div class="form">
     <!-- <h1>Recipe Controller</h1><br/> -->
@@ -105,6 +115,7 @@
     </div>
   </div>
   <!-- RECIPE INDEX END -->
+
   <!-- RECIPE SHOW -->
   <!-- <section id="recipe-show" class="form modal">
     <section ng-repeat="info in ctrl.recipes.recipes." class="recipes recipe-display modal-input-box"> -->
@@ -112,8 +123,8 @@
       <!-- <div>
         <a class="close">X</a>
       </div>
-      <!-- Button to close the modal END-->
-        <div><h3>Title: {{recipe.title}}</h3></div>
+      <!- Button to close the modal END-->
+        <!--<div><h3>Title: {{recipe.title}}</h3></div>
         <div><img src="{{recipe.img}}"/></div>
         <p>Ingredients: {{recipe.ingredients}}</p>
         <p>Description: {{recipe.description}}</p>
@@ -121,7 +132,9 @@
         <p>Servings: {{recipe.servings}}</p>
     </section>
   </section> -->
+
   <!-- RECIPE SHOW END -->
+
   <!-- CREATE RECIPE -->
   <section id="create-recipe" class="modal" ng-show="!ctrl.token">
     <section class="modal-input-box">
@@ -173,7 +186,7 @@
         <input class="directions" type="text" ng-model="ctrl.formdata.directions" placeholder="directions"/><br/>
         <input class="login-btn submit" type="submit" value="Edit Recipe"/>
       </form>
-      <button ng-click="ctrl.deleteRecipe(id)">Delete Recipe</button>
+      <button class="delete-btn" ng-click="ctrl.deleteRecipe(id)">Delete Recipe</button>
     </section>
   </section>
   <!--EDIT RECIPE END-->
@@ -193,7 +206,7 @@
         <input class="password" type="password" ng-model="user.password" placeholder="password" required min-length="8"/><br/>
         <input class="create-account-btn" type="submit" value="Edit Account"/>
       </form>
-      <button ng-click="ctrl.deleteAccount()">Delete Account</button>
+      <button class="delete-btn" ng-click="ctrl.deleteAccount()">Delete Account</button>
     </section>
   </section>
   <!--END USER EDIT/DELETE MODAL-->
