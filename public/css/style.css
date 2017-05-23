@@ -337,10 +337,6 @@ login-form h2 {
   display: none;
 }
 
-.create {
-  display: inline-block;
-}
-
 /**********************EDIT RECIPE MODAL*******************/
 
 #edit-recipe {
