@@ -104,21 +104,23 @@
 <!-- CREATE RECIPE BTN -->
 
 <!-- RECIPE INDEX -->
-<div class="form">
+<div id="index">
   <!-- <h1>Recipe Controller</h1><br/> -->
-  <div id="open-edit">
     <div class="recipes-container">
-      <div class="recipes" ng-show="ctrl.token" ng-repeat="recipe in ctrl.recipes" ng-click="ctrl.getOneRecipe(recipe.id);">
-        <section class="icons">
+      <div class="recipes" ng-show="ctrl.token" ng-repeat="recipe in ctrl.recipes">
+
+        <div class="icons" id="open-edit">
           <i ng-click="ctrl.edit(recipe, recipe.id)" class="fa fa-pencil-square-o" aria-hidden="true"></i>
-        </section>
-        <img class="recipe-index-img" src="{{recipe.img}}">
+        </div>
+
+        <img ng-click="ctrl.getOneRecipe(recipe.id);" class="recipe-index-img" src="{{recipe.img}}">
+
         <h4 class="recipe-index-title">{{recipe.title}}</h4>
+
         <!-- <small><span>submitted by</span> {{}}</small> -->
       </div>
     </div>
   </div>
-</div>
 <!-- RECIPE INDEX END -->
 
 <!-- RECIPE SHOW -->
