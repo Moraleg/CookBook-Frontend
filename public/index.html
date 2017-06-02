@@ -106,9 +106,9 @@
 <!-- RECIPE INDEX -->
 <div class="form">
   <!-- <h1>Recipe Controller</h1><br/> -->
-  <div class="recipes" id="open-edit">
+  <div id="open-edit">
     <div class="recipes-container">
-      <div ng-show="ctrl.token" ng-repeat="recipe in ctrl.recipes" ng-click="ctrl.getOneRecipe(recipe.id);">
+      <div class="recipes" ng-show="ctrl.token" ng-repeat="recipe in ctrl.recipes" ng-click="ctrl.getOneRecipe(recipe.id);">
         <section class="icons">
           <i ng-click="ctrl.edit(recipe, recipe.id)" class="fa fa-pencil-square-o" aria-hidden="true"></i>
         </section>

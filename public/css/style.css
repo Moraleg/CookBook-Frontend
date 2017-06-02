@@ -352,8 +352,8 @@ login-form h2 {
 }
 
 .recipes {
-  display: flex;
-  flex-flow: row wrap;
+  display: inline-block;
+  /*flex-flow: row wrap;*/
   text-align: center;
   padding: 1vh 1vw;
 
@@ -365,7 +365,8 @@ login-form h2 {
   margin: 14px 40px;
   background-color: white;
   border-radius: 4px;
-  display: inline-block;
+  display: flex;
+  flex-flow: row wrap;
   text-align: center;
   padding-top: 30px;
 }
