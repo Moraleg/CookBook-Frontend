@@ -110,11 +110,11 @@
     <div class="recipes-container">
       <div ng-show="ctrl.token" ng-repeat="recipe in ctrl.recipes" ng-click="ctrl.getOneRecipe(recipe.id);">
         <section class="icons">
-          <i ng-click="ctrl.edit(recipe)" class="fa fa-pencil-square-o" aria-hidden="true"></i>
+          <i ng-click="ctrl.edit(recipe, recipe.id)" class="fa fa-pencil-square-o" aria-hidden="true"></i>
         </section>
         <img class="recipe-index-img" src="{{recipe.img}}">
         <h4 class="recipe-index-title">{{recipe.title}}</h4>
-        <small><span>submitted by</span> {{}}</small>
+        <!-- <small><span>submitted by</span> {{}}</small> -->
       </div>
     </div>
   </div>
@@ -122,8 +122,8 @@
 <!-- RECIPE INDEX END -->
 
 <!-- RECIPE SHOW -->
-<section id="recipe-show" class="form modal">
-  <section class="recipes recipe-display modal-input-box">
+<section id="recipe-show" class="form" ng-if="ctrl.seeRecipe">
+  <section class="recipes recipe-display">
     <div>
       <a class="close">X</a>
     </div>

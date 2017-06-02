@@ -9,17 +9,17 @@ app.controller('mainController', ['$http', function($http) {
 
   //empty object for user
   this.user = {};
-  this.notices = [];
+  //this.notices = [];
   this.formdata = {};
   this.updatedata = {};
   //changed this.recipe from array to object
   this.recipe = {};
   this.recipes = [];
-  this.getrecipe = [];
+  this.getrecipe = {};
   // this.recipeId = ();
   this.token = false;
-
-  this.showRecipeId = "";
+  this.seeRecipe = false;
+  //this.showRecipeId = "";
 
 //========================================
 //            CREATE USER
@@ -156,18 +156,6 @@ app.controller('mainController', ['$http', function($http) {
   //   }.bind(this))
   // }; //End getUsers
 
-  // this.getUserId = function(id){
-  //     $http({
-  //         method:"POST",
-  //         url: this.url + "/users/" + id,
-  //         headers: {
-  //             Authorization: JSON.parse(localStorage.getItem("token"))
-  //         }
-  //     }).then(function(response){//success
-  //       //this also might be a set to the userid so we probably can get rid of one or the other
-  //             this.id = response.data.id;
-  //         }.bind(this));
-  // };
 
 //========================================
 //            RECIPE INDEX
@@ -198,6 +186,7 @@ app.controller('mainController', ['$http', function($http) {
     }).then(function(response) {
       //console.log(response);
       //this.seeRecipe = true;
+      this.seeRecipe = true;
       this.recipe = response.data;
     }.bind(this));
     //this.recipe_id = id;
@@ -334,12 +323,12 @@ app.controller('mainController', ['$http', function($http) {
     });
 
     // //Event listener to open/close recipe-show modal
-    $('.recipes').on('click', function () {
-      $('#recipe-show').css('display', 'block');
-    });
-    $('.close').on('click', function() {
-      $('#recipe-show').css('display', 'none');
-    });
+    // $('.recipes').on('click', function () {
+    //   $('#recipe-show').css('display', 'block');
+    // });
+    // $('.close').on('click', function() {
+    //   $('#recipe-show').css('display', 'none');
+    // });
 
     //Event listener to open/close edit-recipe modal
     $('#open-edit').on('click', function () {
