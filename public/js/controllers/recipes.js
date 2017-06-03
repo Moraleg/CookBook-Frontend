@@ -197,7 +197,7 @@ var app = angular.module('cookbook_app', []);
       }).then(function(response) {
         console.log(response);
         this.seeRecipe = true;
-        this.index = false;
+        //this.index = false;
         this.recipe = response.data;
       }.bind(this));
     };
