@@ -216,7 +216,7 @@ var app = angular.module('cookbook_app', []);
 
   this.updateRecipe = function(recipe, id, userID) {
     console.log('This is the update route');
-    console.log('Update Form Data: ',this.updatedata);
+    console.log('Update Form Data: ',this.recipe);
     $http({
       method: 'PUT',
       url: this.url + '/recipes/' + id,
@@ -229,8 +229,8 @@ var app = angular.module('cookbook_app', []);
       }
     }).then(function (response) {
       console.log('Update data: ', response);
-      this.updatedata = {};
-      if (response.data.status !== 200) {
+      //this.updatedata = {};
+      if (response.data.status == 401) {
         this.error = "Unauthorized";
       } else {
         this.getRecipe(response.data.id);
