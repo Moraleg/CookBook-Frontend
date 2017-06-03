@@ -233,7 +233,7 @@ var app = angular.module('cookbook_app', []);
       if (response.data.status == 401) {
         this.error = "Unauthorized";
       } else {
-        this.getRecipe(response.data.id);
+        this.getOneRecipe(response.data.id);
         this.recipe = response.data;
         this.editable = false;
         this.seeRecipe = true;
