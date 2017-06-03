@@ -24,10 +24,7 @@ var app = angular.module('cookbook_app', []);
     //this.homeToIndex = false;
     //toggle changes the show block to be visible
     this.seeRecipe = false;
-
-    //this.changeView = function() {
-    //  this.homeToIndex = true;
-    //};
+    this.editable = false;
 
     //===========CREATE USER============//
 
@@ -209,7 +206,7 @@ var app = angular.module('cookbook_app', []);
 
 //========RECIPE EDIT========//
 
-  this.editable = false;
+
 
   this.showEdit = function() {
     this.seeRecipe = false;
@@ -237,6 +234,7 @@ var app = angular.module('cookbook_app', []);
       } else {
         this.getRecipe(response.data.id);
         this.recipe = response.data;
+        this.editable = false;
         this.seeRecipe = true;
       }
     }.bind(this));
