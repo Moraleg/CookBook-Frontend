@@ -380,13 +380,16 @@ login-form h2 {
   background-color: white;
   overflow: auto;
   box-shadow: 0 3px 3px grey;
-  width: 15%;
-  height: 15%;
+  width: 200px;
+  height: 200px;
 }
 
 
 .recipe-index-img {
   width: 10vw;
+  border-radius: 4px;
+  /*padding: 3%;
+  margin: 0 auto;*/
 }
 
 span {
@@ -407,14 +410,22 @@ span {
 
 #recipe-show {
   overflow: auto;
-  /*display: none;*/
-  width: 80%;
+  width: 100%;
 }
 
 .recipe-display {
   display: flex;
+  align-content: center;
+  align-items: center;
+  /*display: none;*/
+  width: 80%;
 }
 
+.showimg {
+  border-radius: 4px;
+  box-shadow: 0 3px 3px grey
+  width: 60%;
+}
 /*=====================================*/
 
 /* media breakpoint */
