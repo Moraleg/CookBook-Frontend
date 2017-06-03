@@ -7,7 +7,7 @@ var app = angular.module('cookbook_app', []);
 
 
     //set variables for usage in functions
-    this.url = //"https://hungry-for-more.herokuapp.com" ||
+    this.url = "https://hungry-for-more.herokuapp.com" ||
     "http://localhost:3000";
 
     //empty user object to get form data
@@ -19,7 +19,7 @@ var app = angular.module('cookbook_app', []);
 
     //toggle to change views when logged in versus logged out
     this.token = false;
-
+    this.index = false;
     //toggle to change views from banner to index
     //this.homeToIndex = false;
     //toggle changes the show block to be visible
@@ -77,6 +77,7 @@ var app = angular.module('cookbook_app', []);
           localStorage.setItem("token", JSON.stringify(response.data.token));
           //toggle for token validation to make certain parts of the page show and not show with ngs
           this.token = true;
+          this.index = true;
         }
       }.bind(this));
     };
@@ -84,6 +85,7 @@ var app = angular.module('cookbook_app', []);
     //===========USER LOGOUT===========//
 
     this.logout = function() {
+      this.index = false;
       this.token = false;
       localStorage.clear("token");
       location.reload();
@@ -195,8 +197,14 @@ var app = angular.module('cookbook_app', []);
       }).then(function(response) {
         console.log(response);
         this.seeRecipe = true;
+        this.index = false;
         this.recipe = response.data;
       }.bind(this));
+    };
+
+    this.backToIndex = function() {
+      this.index = true;
+      this.seeRecipe = false;
     };
 
 //========RECIPE EDIT========//
@@ -224,7 +232,7 @@ var app = angular.module('cookbook_app', []);
   //       this.recipe = response.data;
   //     }
   //   }.bind(this));
-  //}; //end update data
+  // }; //end update data
 
 
   //========RECIPE DELETE========//
@@ -296,8 +304,8 @@ var app = angular.module('cookbook_app', []);
       $('#edit-user-modal').css('display', 'none');
     });
 
-    // //Event listener to open/close recipe-show modal
-    // $('.recipes').on('click', function () {
+    //Event listener to open/close recipe-show modal
+    // $('.recipe-index-img').on('click', function () {
     //   $('#recipe-show').css('display', 'block');
     // });
     // $('.close').on('click', function() {

@@ -36,13 +36,13 @@
     </section>
     <main ng-show="!ctrl.token" class="main-content">
       <section class="mid">
-        <p>BENEFIT</p>
+        <p>BROWSE</p>
       </section>
       <section class="mid" id="mid">
-        <p>BENEFIT</p>
+        <p>COOK</p>
       </section>
       <section class="mid">
-        <p>BENEFIT</p>
+        <p>SHARE</p>
       </section>
     </main>
   </div>
@@ -89,25 +89,17 @@
         <input class="login-btn" ng-click="user.login()" type="submit"/>
       </form>
       <p>Welcome: {{ ctrl.user.username }} </p>
-      <div>{{ctrl.error}}</div>
+      <p>{{ctrl.error}}</p>
       <!-- removed ng repeat for user -->
     </section>
   </section>
   <!--END LOGIN MODAL-->
 
-  <!-- CREATE RECIPE BTN -->
-  <!-- <section>
-  <section>
-  <a class="login-btn create" href="#">CREATE RECIPE</a>
-</section>
-</section> -->
-<!-- CREATE RECIPE BTN -->
-
 <!-- RECIPE INDEX -->
 <div id="index">
   <!-- <h1>Recipe Controller</h1><br/> -->
     <div class="recipes-container">
-      <div class="recipes" ng-show="ctrl.token" ng-repeat="recipe in ctrl.recipes">
+      <div class="recipes" ng-if="ctrl.index" ng-repeat="recipe in ctrl.recipes">
 
         <!-- <div class="icons" id="open-edit">
           <i ng-click="ctrl.edit(recipe.id)" class="fa fa-pencil-square-o" aria-hidden="true"></i>
@@ -125,24 +117,22 @@
 
 <!-- RECIPE SHOW -->
 <section id="recipe-show" ng-if="ctrl.seeRecipe">
-  <section class="recipes recipe-display">
-    <!-- <div>
-      <a class="close">X</a>
-    </div> -->
-    <!-- Button to close the modal END -->
+  <section class="recipe-display">
+    <div>
+      <a class="close" ng-click="ctrl.backToIndex();">Back</a>
+    </div>
 
-    <!-- ADDED THESE TWO SECTION STARTER TAGS TO REMOVE ERROR -->
+    <!-- Button to close the modal END -->
     <section>
-      <div><h3>Title: {{ctrl.recipes.recipes.title}}</h3></div>
-      <div><img src="{{recipes.img}}"/></div>
-      <p>Ingredients: {{recipes.ingredients}}</p>
-      <p>Description: {{recipes.description}}</p>
-      <p>Directions: {{recipes.directions}}</p>
-      <p>Servings: {{recipes.servings}}</p>
+      <div><h3>Title: {{ctrl.recipe.title}}</h3></div>
+      <div><img src="{{ctrl.recipe.img}}"/></div>
+      <p>Ingredients: {{ctrl.recipe.ingredients}}</p>
+      <p>Description: {{ctrl.recipe.description}}</p>
+      <p>Directions: {{ctrl.recipe.directions}}</p>
+      <p>Servings: {{ctrl.recipe.servings}}</p>
     </section>
   </section>
 </section>
-
 <!-- RECIPE SHOW END -->
 
 <!-- CREATE RECIPE -->
@@ -175,6 +165,7 @@
       <br/>
       <input class="login-btn submit" type="submit" value="Create Recipe"/>
     </form>
+    <p>{{this.error}}</p>
   </section>
 </section>
 <!--END CREATE RECIPE-->
@@ -212,6 +203,7 @@
       <input class="login-btn submit" type="submit" value="Edit Recipe"/>
     </form>
     <button class="delete-btn" ng-click="ctrl.deleteRecipe(ctrl.recipe.id)">Delete Recipe</button>
+    <p>{{ctrl.error}}</p>
   </section>
 </section>
 <!--EDIT RECIPE END-->
@@ -236,6 +228,7 @@
       <input  class="create-account-btn" type="submit" value="Edit Account"/>
     </form>
     <button class="delete-btn" ng-click="ctrl.deleteAccount(ctrl.user.id)">Delete Account</button>
+    <p>{{ctrl.error}}</p>
   </section>
 </section>
 <!--END USER EDIT/DELETE MODAL-->
