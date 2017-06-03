@@ -351,11 +351,11 @@ login-form h2 {
   display: flex;
 }
 
-#index {
+/*#index {
   overflow: hidden;
   width: 100%;
   padding-top: 6px;
-}
+}*/
 
 .recipes-container {
   width: 100%;
@@ -423,8 +423,8 @@ span {
 
 .showimg {
   border-radius: 4px;
-  box-shadow: 0 3px 3px grey
-  width: 60%;
+  box-shadow: 0 3px 3px grey;
+  width: 200px;
 }
 /*=====================================*/
 
