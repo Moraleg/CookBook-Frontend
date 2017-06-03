@@ -175,7 +175,7 @@
 <section id="edit-recipe" class="modal" ng-if="ctrl.editable">
   <section class="modal-input-box">
     <div>
-      <a class="close">X</a>
+      <a class="close" ng-click="ctrl.backToIndex();">X</a>
     </div>
     <form ng-submit="ctrl.updateRecipe(ctrl.recipe, ctrl.recipe.id)">
       <div class="legend-container">

@@ -202,6 +202,7 @@ var app = angular.module('cookbook_app', []);
     this.backToIndex = function() {
       this.index = true;
       this.seeRecipe = false;
+      this.editable = false;
     };
 
 //========RECIPE EDIT========//
