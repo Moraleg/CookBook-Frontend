@@ -116,11 +116,11 @@
 <section  class="modal" ng-if="ctrl.seeRecipe">
   <section class="modal-input-box">
     <div>
-      <a class="close" ng-click="ctrl.backToIndex();">Back</a>
+      <a class="close" ng-click="ctrl.backToIndex();">X</a>
     </div>
     <!-- moved from indexed recipes -->
     <div class="icons" id="open-edit">
-      <i ng-click="ctrl.edit(recipe.id)" class="fa fa-pencil-square-o" aria-hidden="true"></i>
+      <i ng-click="ctrl.updateRecipe(recipe.id)" class="fa fa-pencil-square-o" aria-hidden="true"></i>
     </div>
     <!-- Button to close the modal END -->
     <section>
