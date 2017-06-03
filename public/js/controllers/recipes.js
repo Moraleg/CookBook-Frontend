@@ -227,8 +227,8 @@ var app = angular.module('cookbook_app', []);
         Authorization:
         'Bearer ' + JSON.parse(localStorage.getItem('token'))
       }
-    }).then(function (result) {
-      console.log('Update data: ', result);
+    }).then(function (response) {
+      console.log('Update data: ', response);
       this.updatedata = {};
       if (response.data.status !== 200) {
         this.error = "Unauthorized";
