@@ -215,8 +215,8 @@ var app = angular.module('cookbook_app', []);
   };
 
   this.updateRecipe = function(recipe, id, userID) {
-    console.log('This is the update route');
-    console.log('Update Form Data: ',this.recipe);
+    //console.log('This is the update route');
+    //console.log('Update Form Data: ',this.recipe);
     $http({
       method: 'PUT',
       url: this.url + '/recipes/' + id,
@@ -228,9 +228,9 @@ var app = angular.module('cookbook_app', []);
         'Bearer ' + JSON.parse(localStorage.getItem('token'))
       }
     }).then(function (response) {
-      console.log('Update data: ', response);
+      //console.log('Update data: ', response);
       //this.updatedata = {};
-      if (response.data.status == 401) {
+      if (this.recipe.user_id !== this.user.id) {
         this.error = "Unauthorized";
       } else {
         this.getOneRecipe(response.data.id);
