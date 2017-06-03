@@ -380,8 +380,8 @@ login-form h2 {
   background-color: white;
   overflow: auto;
   box-shadow: 0 3px 3px grey;
-  width: 15vw;
-  height: 15vh;
+  width: 15%;
+  height: 15%;
 }
 
 
@@ -405,10 +405,9 @@ span {
 }
 /*****************RECIPE SHOW MODAL*******************/
 
-/*#recipe-show {
+#recipe-show {
   overflow: auto;
-  display: none;
-}*/
+}
 
 .recipe-display {
   display: flex;
@@ -428,10 +427,10 @@ span {
     line-height: normal;
   }
 
-  .recipes-container {
+  /*.recipes-container {
     display: block;
     width: 80vw;
-  }
+  }*/
 
   #mid {
     border-right: 0;

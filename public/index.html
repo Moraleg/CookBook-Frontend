@@ -124,16 +124,16 @@
 <!-- RECIPE INDEX END -->
 
 <!-- RECIPE SHOW -->
-<section id="recipe-show" class="form" ng-if="ctrl.seeRecipe">
+<section id="recipe-show" ng-if="ctrl.seeRecipe">
   <section class="recipes recipe-display">
-    <div>
+    <!-- <div>
       <a class="close">X</a>
-    </div>
+    </div> -->
     <!-- Button to close the modal END -->
 
     <!-- ADDED THESE TWO SECTION STARTER TAGS TO REMOVE ERROR -->
     <section>
-      <div><h3>Title: {{ctrl.recipe.title}}</h3></div>
+      <div><h3>Title: {{ctrl.recipes.title}}</h3></div>
       <div><img src="{{ctrl.recipe.img}}"/></div>
       <p>Ingredients: {{ctrl.recipe.ingredients}}</p>
       <p>Description: {{ctrl.recipe.description}}</p>

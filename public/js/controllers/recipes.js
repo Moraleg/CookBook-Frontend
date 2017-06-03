@@ -4,7 +4,8 @@ app.controller('mainController', ['$http', function($http) {
 
   // this.test = "mainController is working!";
   //backend server location
-  this.url = 'https://hungry-for-more.herokuapp.com/' || 'http://localhost:3000';
+  this.url = //'https://hungry-for-more.herokuapp.com' ||
+  'http://localhost:3000';
 
 
   //empty object for user
@@ -179,7 +180,8 @@ app.controller('mainController', ['$http', function($http) {
 //========================================
 
   //Get one Recipe
-  this.getOneRecipe = function(index){
+  this.getOneRecipe = function(id){
+    console.log(id);
     $http({
       method: "GET",
       url: this.url + "/recipes/" + id,
@@ -187,21 +189,8 @@ app.controller('mainController', ['$http', function($http) {
       //console.log(response);
       //this.seeRecipe = true;
       this.seeRecipe = true;
-      this.recipe = response.data;
+      this.recipe = response.data.recipe;
     }.bind(this));
-    //this.recipe_id = id;
-    // console.log(index);
-    // this.showRecipeId = index;
-    // console.log("get one recipe ", index);
-    // $http({
-    //   method: 'GET',
-    //   url: this.url + '/recipes/' + id
-    // }).then(function(result){
-    //   console.log(result);
-    //   this.recipe = result.data;
-    //   console.log('==============');
-    //   console.log(this.recipe);
-    //});
   };
 
   //========================================
