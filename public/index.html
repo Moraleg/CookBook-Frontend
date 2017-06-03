@@ -101,10 +101,6 @@
     <div class="recipes-container">
       <div class="recipes" ng-if="ctrl.index" ng-repeat="recipe in ctrl.recipes">
 
-        <!-- <div class="icons" id="open-edit">
-          <i ng-click="ctrl.edit(recipe.id)" class="fa fa-pencil-square-o" aria-hidden="true"></i>
-        </div> -->
-
         <img ng-click="ctrl.getOneRecipe(recipe.id);" class="recipe-index-img" src="{{recipe.img}}">
 
         <h4 class="recipe-index-title">{{recipe.title}}</h4>
@@ -122,7 +118,10 @@
     <div>
       <a class="close" ng-click="ctrl.backToIndex();">Back</a>
     </div>
-
+    <!-- moved from indexed recipes -->
+    <div class="icons" id="open-edit">
+      <i ng-click="ctrl.edit(recipe.id)" class="fa fa-pencil-square-o" aria-hidden="true"></i>
+    </div>
     <!-- Button to close the modal END -->
     <section>
       <div><h3>{{ctrl.recipe.title}}</h3></div>

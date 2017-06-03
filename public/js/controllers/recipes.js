@@ -209,30 +209,30 @@ var app = angular.module('cookbook_app', []);
 
 //========RECIPE EDIT========//
 
-  // this.updateRecipe = function(recipe, id) {
-  //   console.log('This is the update route');
-  //   console.log('Update Form Data: ',this.updatedata);
-  //   $http({
-  //     method: 'PUT',
-  //     url: this.url + '/recipes/' + id,
-  //     data: {
-  //       recipe: recipe
-  //     },
-  //     headers: {
-  //       Authorization:
-  //       'Bearer ' + JSON.parse(localStorage.getItem('token'))
-  //     }
-  //   }).then(function (result) {
-  //     console.log('Update data: ', result);
-  //     this.updatedata = {};
-  //     if (response.data.status == 401) {
-  //       this.error = "Unauthorized";
-  //     } else {
-  //       this.getRecipe(response.data.id);
-  //       this.recipe = response.data;
-  //     }
-  //   }.bind(this));
-  // }; //end update data
+  this.updateRecipe = function(recipe, id) {
+    console.log('This is the update route');
+    console.log('Update Form Data: ',this.updatedata);
+    $http({
+      method: 'PUT',
+      url: this.url + '/recipes/' + id,
+      data: {
+        recipe: recipe
+      },
+      headers: {
+        Authorization:
+        'Bearer ' + JSON.parse(localStorage.getItem('token'))
+      }
+    }).then(function (result) {
+      console.log('Update data: ', result);
+      this.updatedata = {};
+      if (response.data.status == 401) {
+        this.error = "Unauthorized";
+      } else {
+        this.getRecipe(response.data.id);
+        this.recipe = response.data;
+      }
+    }.bind(this));
+  }; //end update data
 
 
   //========RECIPE DELETE========//
