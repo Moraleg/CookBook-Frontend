@@ -341,7 +341,8 @@ login-form h2 {
 
 #edit-recipe {
   overflow: auto;
-  display: none;
+  /*display: none;*/
+  width: 100%;
 }
 
 /*****************RECIPE INDEX MODAL*******************/
