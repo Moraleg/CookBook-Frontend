@@ -192,7 +192,7 @@ var app = angular.module('cookbook_app', []);
         method: "GET",
         url: this.url + "/recipes/" + id,
       }).then(function(response) {
-        console.log(response);
+        //console.log(response);
         this.seeRecipe = true;
         //this.index = false;
         this.recipe = response.data;
@@ -230,7 +230,7 @@ var app = angular.module('cookbook_app', []);
     }).then(function (response) {
       //console.log('Update data: ', response);
       //this.updatedata = {};
-      if (this.recipe.user_id !== this.user.id) {
+      if (this.response.status == 422) {
         this.error = "Unauthorized";
       } else {
         this.getOneRecipe(response.data.id);
@@ -244,26 +244,28 @@ var app = angular.module('cookbook_app', []);
 
   //========RECIPE DELETE========//
 
-  // this.deleteRecipe = function(id) {
-  //   console.log('delete clicked');
-  //   console.log(id);
-  //   $http({
-  //     method: 'DELETE',
-  //     url: this.url + '/recipes/' + id,
-  //     headers: {
-  //       Authorization:
-  //       'Bearer ' + JSON.parse(localStorage.getItem('token'))
-  //     }
-  //   }).then(function(reponse) {
-  //     console.log(response);
-  //     //this.notices = response.data;
-  //     if (response.data.status == 401) {
-  //       this.error = "Unauthorized";
-  //     } else {
-  //       //this.getRecipe(response.data.id);
-  //       this.recipe = response.data;
-  //     }
-  //   }.bind(this));
+  this.deleteRecipe = function(id) {
+    console.log('delete clicked');
+    console.log(id);
+    $http({
+      method: 'DELETE',
+      url: this.url + '/recipes/' + id,
+      headers: {
+        Authorization:
+        'Bearer ' + JSON.parse(localStorage.getItem('token'))
+      }
+    }).then(function(reponse) {
+      console.log(response);
+      //this.notices = response.data;
+      if (response.data.status == 401) {
+        this.error = "Unauthorized";
+      } else {
+        //this.getRecipe(response.data.id);
+        this.recipe = response.data;
+        this.editable = false;
+        this.seeRecipe = true;
+      }
+    }.bind(this));
   // };
 
 
