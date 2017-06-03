@@ -120,7 +120,7 @@
     </div>
     <!-- moved from indexed recipes -->
     <div class="icons" id="open-edit">
-      <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+      <i ng-click="ctrl.showEdit();" class="fa fa-pencil-square-o" aria-hidden="true"></i>
     </div>
     <!-- Button to close the modal END -->
     <section>
@@ -136,7 +136,7 @@
 <!-- RECIPE SHOW END -->
 
 <!-- CREATE RECIPE -->
-<section id="create-recipe" class="modal">
+<section id="create-recipe" class="modal" ng-if="ctrl.editable">
   <section class="modal-input-box">
     <div>
       <a class="close">X</a>

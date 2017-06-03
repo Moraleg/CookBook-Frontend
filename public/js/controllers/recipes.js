@@ -209,6 +209,13 @@ var app = angular.module('cookbook_app', []);
 
 //========RECIPE EDIT========//
 
+  this.editable = false;
+
+  this.showEdit = function() {
+    this.seeRecipe = false;
+    this.editable = true;
+  };
+
   this.updateRecipe = function(recipe, id) {
     console.log('This is the update route');
     console.log('Update Form Data: ',this.updatedata);
@@ -230,6 +237,7 @@ var app = angular.module('cookbook_app', []);
       } else {
         this.getRecipe(response.data.id);
         this.recipe = response.data;
+        this.seeRecipe = true;
       }
     }.bind(this));
   }; //end update data
@@ -312,13 +320,13 @@ var app = angular.module('cookbook_app', []);
     //   $('#recipe-show').css('display', 'none');
     // });
 
-    //Event listener to open/close edit-recipe modal
-    $('#open-edit').on('click', function () {
-      $('#edit-recipe').css('display', 'block');
-    });
-    $('.close').on('click', function() {
-      $('#edit-recipe').css('display', 'none');
-    });
+    // //Event listener to open/close edit-recipe modal
+    // $('#open-edit').on('click', function () {
+    //   $('#edit-recipe').css('display', 'block');
+    // });
+    // $('.close').on('click', function() {
+    //   $('#edit-recipe').css('display', 'none');
+    // });
 
     //Event listener to open/close create-recipe modal
     $('.create-recipe-open').on('click', function () {
