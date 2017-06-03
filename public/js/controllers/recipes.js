@@ -1,285 +1,270 @@
 var app = angular.module('cookbook_app', []);
 
-app.controller('mainController', ['$http', function($http) {
 
-  // this.test = "mainController is working!";
-  //backend server location
-  this.url = //'https://hungry-for-more.herokuapp.com' ||
-  'http://localhost:3000';
+  app.controller("mainController", ["$http", "$scope", function($http, $scope) {
+
+    this.message = "the app.js file is attached!";
 
 
-  //empty object for user
-  this.user = {};
-  //this.notices = [];
-  this.formdata = {};
-  this.updatedata = {};
-  //changed this.recipe from array to object
-  this.recipe = {};
-  this.recipes = [];
-  this.getrecipe = {};
-  // this.recipeId = ();
-  this.token = false;
-  this.seeRecipe = false;
-  //this.showRecipeId = "";
+    //set variables for usage in functions
+    this.url = //"https://hungry-for-more.herokuapp.com" ||
+    "http://localhost:3000";
 
-//========================================
-//            CREATE USER
-//========================================
+    //empty user object to get form data
+    this.user = {};
+    //form data for recipes
+    this.recipeFormdData = {};
+    //recipe empty object
+    this.recipe = {};
 
-  //create a user
-  this.createAccount = function(user) {
-    console.log(user);
+    //toggle to change views when logged in versus logged out
+    this.token = false;
 
-    $http({
-       method: 'POST',
-       url: this.url + '/users',
-       data: {
-         user: {
-          username: user.username,
-          password: user.password
+    //toggle to change views from banner to index
+    //this.homeToIndex = false;
+    //toggle changes the show block to be visible
+    this.seeRecipe = false;
+
+    //this.changeView = function() {
+    //  this.homeToIndex = true;
+    //};
+
+    //===========CREATE USER============//
+
+    this.createAccount = function(user) {
+      //console.log(user);
+      $http({
+        method: "POST",
+        url: this.url + "/users",
+        data: {
+          user: {
+            username: user.username,
+            password: user.password
           }
-       },
-     }).then(function(response) {//sucess
-       console.log(response);
-       if (response.status == 401) {
-         this.error = "Please try again, the username may be taken or you have not filled these fields.";
-       } else {
-         this.user = response.data.user;
-       }
-     }.bind(this));
-  };
+        },
+      }).then(function(response) {
+        //console.log(response);
+        if (response.status == 401) {
+          this.error = "Please try again, the username may be taken or you have not filled these fields.";
+        } else {
+          this.user = response.data.user;
+        }
+      }.bind(this));
+    };
 
-  //========================================
-  //            USER LOGIN
-  //========================================
 
-  //login function
-  this.login = function(user) {
-    console.log(user);
+    //==========LOGIN USER==========//
 
-    $http({
-       method: 'POST',
-       url: this.url + '/users/login',
-       data: {
-         user: {
-          username: user.username,
-          password: user.password
+    this.login = function(user) {
+      //console.log(user);
+      $http({
+        method: "POST",
+        url: this.url + "/users/login",
+        data: {
+          user: {
+            username: user.username,
+            password: user.password
           }
-       },
-     }).then(function(response) {//sucess
-       console.log(response);
+        },
+      }).then(function(response) {
+        //console.log(response);
         if (response.data.status == 401) {
+          // this is for if the user doesn't exist or if they have entered the wrong password or username or have left them blank
           this.error = "Please try again";
         } else {
-         this.user = response.data.user;
-         localStorage.setItem('token', JSON.stringify(response.data.token));
-         this.token = true;
+          this.user = response.data.user;
+          //give them a token
+          localStorage.setItem("token", JSON.stringify(response.data.token));
+          //toggle for token validation to make certain parts of the page show and not show with ngs
+          this.token = true;
         }
-     }.bind(this));
-  };
+      }.bind(this));
+    };
+
+    //===========USER LOGOUT===========//
+
+    this.logout = function() {
+      this.token = false;
+      localStorage.clear("token");
+      location.reload();
+    };
+
+    //===========USER EDIT===========//
+
+    this.updateUser = function(user, id) {
+      //console.log(user);
+      //console.log(id);
+      $http({
+        method: "PUT",
+        url: this.url + "/users/" + id,
+        data :{
+          user: user
+          // user: {
+          //   favorite_block: user.favorite_block,
+          //   years_quilting: user.years_quilting
+          // }
+        },
+        headers: {
+          Authorization: 'Bearer ' + JSON.parse(localStorage.getItem('token'))
+        }
+      }).then(function(response) {
+        //console.log(response);
+        if (response.data.status == 401) {
+          this.error = "Unauthorized";
+        } else {
+          this.getUser(response.data.id);
+          this.user = response.data;
+        }
+      }.bind(this));
+    };
 
 
-  //  =================================================
-  //                 USER UPDATE
-  // =================================================
+    //===========USER SHOW============//
 
-  this.updateUser = function(user, id) {
-    $http({
-      method: 'PUT',
-      url: this.url + '/users/' + id,
-      data: {
-        user: user
-      },
-      headers: {
-        Authorization: JSON.parse(localStorage.getItem('token'))
-      }
-    }).then(function(response) {
-      console.log(response);
-      if (response.data.status == 401) {
-        this.error = "Unauthorized";
+    this.getUser = function(id) {
+      $http({
+        method: "GET",
+        url: this.url + "/users/" + id, //localStorage.getItem("userId"),
+        headers: {
+          Authorization: 'Bearer ' + JSON.parse(localStorage.getItem('token'))
+        }
+      }).then(function(response) {
+        //console.log(response);
+        if (response.data.status == 401) {
+          this.error = "Unauthorized";
+        } else {
+          this.user = response.data;
+        }
+      }.bind(this));
+    };
+
+
+    //==========USER DELETE===========//
+
+    this.deleteAccount = function(id) {
+      //console.log("delete clicked");
+      $http({
+        method: "DELETE",
+        url: this.url + "/users/" + id,
+        headers: {
+          Authorization: 'Bearer ' + JSON.parse(localStorage.getItem('token'))
+        }
+      }).then(function(response) {
+        //console.log(response + "delete");
+        if (response.data.status == 401) {
+          this.error = "Unauthorized";
+        } else {
+          this.logout();
+        }
+      }.bind(this));
+    };
+
+    //========RECIPE CREATE========//
+
+    //NEED TO PASS IN USERID
+    this.recipeForm = function(recipe, id) {
+      $http({
+        method: "POST",
+        url: this.url + "/recipes",
+        data: {
+          recipe: recipe
+        },
+        headers: {
+          Authorization:
+          'Bearer ' + JSON.parse(localStorage.getItem('token'))
+        }
+      }).then(function(response) {
+        //console.log(response + "created quilt block");
+        //if 401 error message please login
+        if (response.data.status == 422) {
+        this.error = "Please Login to create a quilt";
       } else {
-        this.getUser(response.data.id);
-        this.user = response.data;
-      }
-    }.bind(this));
-  };//End updateUser()
+        this.recipe = response.data.recipe;
+        this.recipeFormData = {};
+        this.getRecipes();
+        }
+      }.bind(this));
+    };
 
-  //  =================================================
-  //                 USER DELETE
-  // =================================================
-  //
-  this.deleteAccount = function(id) {
-    console.log('delete clicked');
-    //this.user_id = id;
-    $http({
-      method: 'DELETE',
-      url: this.url + '/users/' + id,
-      headers: {
-          Authorization: JSON.parse(localStorage.getItem('token'))
-      }
-    }).then(function(reponse) {
-      console.log(response);
-      //this.user = response.data;
-      if (response.data.status == 401) {
-        this.error = "Unauthorized";
-      } else {
-        this.logout();
-      }
-    }.bind(this));
-  };
+    //========RECIPE SHOW========//
 
+    this.getOneRecipe = function(id) {
+      $http({
+        method: "GET",
+        url: this.url + "/recipes/" + id,
+      }).then(function(response) {
+        console.log(response);
+        this.seeRecipe = true;
+        this.recipe = response.data;
+      }.bind(this));
+    };
 
-  //========================================
-  //            USER LOGOUT
-  //========================================
-  //logout function
-  this.logout = function() {
-    this.token = false;
-    localStorage.clear('token');
-    location.reload();
-  };//End logout()
+//========RECIPE EDIT========//
 
-  //see content
-  // this.getUsers = function() {
+  // this.updateRecipe = function(recipe, id) {
+  //   console.log('This is the update route');
+  //   console.log('Update Form Data: ',this.updatedata);
   //   $http({
-  //     method: 'GET',
-  //     url: this.url + '/users',
+  //     method: 'PUT',
+  //     url: this.url + '/recipes/' + id,
+  //     data: {
+  //       recipe: recipe
+  //     },
   //     headers: {
-  //       Authorization: 'Bearer ' + JSON.parse(localStorage.getItem('token'))
+  //       Authorization:
+  //       'Bearer ' + JSON.parse(localStorage.getItem('token'))
   //     }
-  //   }).then(function(response) {
-  //     console.log(response);
+  //   }).then(function (result) {
+  //     console.log('Update data: ', result);
+  //     this.updatedata = {};
   //     if (response.data.status == 401) {
   //       this.error = "Unauthorized";
   //     } else {
-  //       this.users = response.data;
+  //       this.getRecipe(response.data.id);
+  //       this.recipe = response.data;
   //     }
-  //   }.bind(this))
-  // }; //End getUsers
+  //   }.bind(this));
+  //}; //end update data
 
 
-//========================================
-//            RECIPE INDEX
-//========================================
+  //========RECIPE DELETE========//
 
-  //Get all recipes
+  // this.deleteRecipe = function(id) {
+  //   console.log('delete clicked');
+  //   console.log(id);
+  //   $http({
+  //     method: 'DELETE',
+  //     url: this.url + '/recipes/' + id,
+  //     headers: {
+  //       Authorization:
+  //       'Bearer ' + JSON.parse(localStorage.getItem('token'))
+  //     }
+  //   }).then(function(reponse) {
+  //     console.log(response);
+  //     //this.notices = response.data;
+  //     if (response.data.status == 401) {
+  //       this.error = "Unauthorized";
+  //     } else {
+  //       //this.getRecipe(response.data.id);
+  //       this.recipe = response.data;
+  //     }
+  //   }.bind(this));
+  // };
+
+
+  //=========RECIPE INDEX=========//
+
   this.getRecipes = function() {
     $http({
-      method: 'GET',
-      url: this.url + '/recipes',
-    }).then(function(response) {
-      console.log(response);
-      this.recipes = response.data;
-      //console.log(this.recipes);
-    }.bind(this));
-  };
-  this.getRecipes();
-
-//========================================
-//            RECIPE SHOW
-//========================================
-
-  //Get one Recipe
-  this.getOneRecipe = function(id){
-    console.log(id);
-    $http({
       method: "GET",
-      url: this.url + "/recipes/" + id,
+      url: this.url + "/recipes",
     }).then(function(response) {
       //console.log(response);
-      //this.seeRecipe = true;
-      this.seeRecipe = true;
-      this.recipe = response.data.recipe;
+      this.recipes = response.data;
     }.bind(this));
   };
 
-  //========================================
-  //            RECIPE CREATE
-  //========================================
-  // function to add recipes to the data base
-  this.recipeForm = function(recipe, id) {
-    this.user_id = id;
-    console.log(id);
-    console.log("recipeForm function ...");
-    console.log('Recipe Form Data: ', this.formdata);
-    $http({
-      method: 'POST',
-      url: this.url + '/recipes',
-      data:  {
-        recipe: recipe
-        //recipe : { //this.formdata
-            // title: recipe.title,
-            // ingredients: recipe.ingredients,
-            // description: recipe.description,
-            // directions: recipe.directions,
-            // servings: recipe.servings,
-            // img: recipe.img
-          //},
-      },
-    //},
-      headers: {
-        Authorization: JSON.parse(localStorage.getItem('token'))
-      }
-    }).then(function (result) {
-      console.log('Data from server: ', result);
-      this.recipe = response.data.recipe;
-      this.formdata = {};
-      this.getRecipes();
-    }.bind(this));
-  }; //end recipe form
-
-  //========================================
-  //            RECIPE EDIT
-  //========================================
-
-  this.updateRecipe = function(recipe, id) {
-    console.log('This is the update route');
-    console.log('Update Form Data: ',this.updatedata);
-    $http({
-      method: 'PUT',
-      url: this.url + '/recipes/' + id,
-      data: {
-        recipe: recipe
-      },
-      headers: {
-        Authorization: JSON.parse(localStorage.getItem('token'))
-      }
-    }).then(function (result) {
-      console.log('Update data: ', result);
-      this.updatedata = {};
-      if (response.data.status == 401) {
-        this.error = "Unauthorized";
-      } else {
-        this.getRecipe(response.data.id);
-        this.recipe = response.data;
-      }
-    }.bind(this));
-  }; //end update data
-
-  //========================================
-  //            RECIPE DELETE
-  //========================================
-
-  this.deleteRecipe = function(id) {
-    console.log('delete clicked');
-    console.log(id);
-    $http({
-      method: 'DELETE',
-      url: this.url + '/recipes/' + id,
-      headers: {
-        Authorization: JSON.parse(localStorage.getItem('token'))
-      }
-    }).then(function(reponse) {
-      console.log(response);
-      //this.notices = response.data;
-      if (response.data.status == 401) {
-        this.error = "Unauthorized";
-      } else {
-        //this.getRecipe(response.data.id);
-        this.recipe = response.data;
-      }
-    }.bind(this));
-  };
+  this.getRecipes();
 
 
   //==============EVENT LISTENERS=========================
