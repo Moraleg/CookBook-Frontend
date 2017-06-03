@@ -354,7 +354,7 @@ login-form h2 {
 #index {
   overflow: hidden;
   width: 100%;
-  padding-top: 1%;
+  padding-top: 6px;
 }
 
 .recipes-container {
@@ -368,8 +368,8 @@ login-form h2 {
   text-align: center;
   align-items: center;
   align-content: center;
-  padding-top: 1%;
-  padding-bottom: 1%;
+  padding-top: 12px;
+  padding-bottom: 12px;
 }
 
 .recipes {

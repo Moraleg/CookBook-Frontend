@@ -101,9 +101,9 @@
     <div class="recipes-container">
       <div class="recipes" ng-if="ctrl.index" ng-repeat="recipe in ctrl.recipes">
 
-        <!-- <div class="icons" id="open-edit">
+        <div class="icons" id="open-edit">
           <i ng-click="ctrl.edit(recipe.id)" class="fa fa-pencil-square-o" aria-hidden="true"></i>
-        </div> -->
+        </div>
 
         <img ng-click="ctrl.getOneRecipe(recipe.id);" class="recipe-index-img" src="{{recipe.img}}">
 
@@ -117,13 +117,13 @@
 
 <!-- RECIPE SHOW -->
 <section id="recipe-show" ng-if="ctrl.seeRecipe">
-  <section class="recipe-display">
+  <section>
     <div>
       <a class="close" ng-click="ctrl.backToIndex();">Back</a>
     </div>
 
     <!-- Button to close the modal END -->
-    <section>
+    <section class="legend-container">
       <div><h3>{{ctrl.recipe.title}}</h3></div>
       <div class="showimg"><img src="{{ctrl.recipe.img}}"/></div>
       <p>Ingredients: {{ctrl.recipe.ingredients}}</p>
