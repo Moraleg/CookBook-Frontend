@@ -244,29 +244,29 @@ var app = angular.module('cookbook_app', []);
 
   //========RECIPE DELETE========//
 
-  this.deleteRecipe = function(id) {
-    console.log('delete clicked');
-    console.log(id);
-    $http({
-      method: 'DELETE',
-      url: this.url + '/recipes/' + id,
-      headers: {
-        Authorization:
-        'Bearer ' + JSON.parse(localStorage.getItem('token'))
-      }
-    }).then(function(reponse) {
-      console.log(response);
-      //this.notices = response.data;
-      if (response.data.status == 401) {
-        this.error = "Unauthorized";
-      } else {
-        //this.getRecipe(response.data.id);
-        this.recipe = response.data;
-        this.editable = false;
-        this.seeRecipe = true;
-      }
-    }.bind(this));
-  // };
+  // this.deleteRecipe = function(id) {
+  //   console.log('delete clicked');
+  //   console.log(id);
+  //   $http({
+  //     method: 'DELETE',
+  //     url: this.url + '/recipes/' + id,
+  //     headers: {
+  //       Authorization:
+  //       'Bearer ' + JSON.parse(localStorage.getItem('token'))
+  //     }
+  //   }).then(function(reponse) {
+  //     console.log(response);
+  //     //this.notices = response.data;
+  //     if (response.data.status == 401) {
+  //       this.error = "Unauthorized";
+  //     } else {
+  //       //this.getRecipe(response.data.id);
+  //       this.recipe = response.data;
+  //       this.editable = false;
+  //       this.seeRecipe = true;
+  //     }
+  //   }.bind(this));
+  // // };
 
 
   //=========RECIPE INDEX=========//
