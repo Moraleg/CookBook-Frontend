@@ -5,12 +5,10 @@
   <title>Cookbook</title>
   <!-- jQuery -->
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g=" crossorigin="anonymous"></script>
-  <!-- angular -->
+  <!-- Angular -->
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js"></script>
-  <!-- loginlogout js file -->
+  <!-- Recipes.js file -->
   <script type="text/javascript" src="/js/controllers/recipes.js"></script>
-  <!-- recipes js file -->
-  <!-- <script type="text/javascript" src="/js/controllers/recipes.js"></script> -->
   <!-- our css file(s) -->
   <link rel="stylesheet" type="text/css" href="/css/style.css" />
 </head>
@@ -100,11 +98,8 @@
   <!-- <h1>Recipe Controller</h1><br/> -->
     <div class="recipes-container">
       <div class="recipes" ng-if="ctrl.index" ng-repeat="recipe in ctrl.recipes">
-
         <img ng-click="ctrl.getOneRecipe(recipe.id);" class="recipe-index-img" src="{{recipe.img}}">
-
         <h4 class="recipe-index-title">{{recipe.title}}</h4>
-
         <!-- <small><span>submitted by</span> {{}}</small> -->
       </div>
     </div>
