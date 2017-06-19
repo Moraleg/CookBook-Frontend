@@ -68,9 +68,13 @@
       <p>{{ctrl.error}}</p>
     </section>
   </section>
-  <!--END CREATE ACCOUNT MODAL-->
 
-  <!--LOGIN MODAL-->
+  <!--END CREATE ACCOUNT MODAL-->
+  <!-- Create login partial -->
+    <!-- <div ng-include="'partials/login-form.html'"></div> -->
+  <!-- End Create login partial -->
+
+  <!-- LOGIN MODAL-->
   <section id="login-modal" class="modal">
     <section class="modal-input-box">
       <!--Button to close modal-->
@@ -93,7 +97,7 @@
       <!-- removed ng repeat for user -->
     </section>
   </section>
-  <!--END LOGIN MODAL-->
+  <!--END LOGIN MODAL -->
 
 <!-- RECIPE INDEX -->
 <div id="index" class="form">
@@ -202,7 +206,7 @@
       <br/>
       <input class="login-btn submit" type="submit" value="Edit Recipe"/>
     </form>
-    <!-- <button class="delete-btn" ng-click="ctrl.deleteRecipe(ctrl.recipe.id)">Delete Recipe</button> -->
+    <button class="delete-btn" ng-click="ctrl.deleteRecipe(ctrl.recipe.id)">Delete Recipe</button>
     <p>{{ctrl.error}}</p>
   </section>
 </section>

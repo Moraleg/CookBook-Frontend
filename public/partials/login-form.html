@@ -1,17 +1,24 @@
-<!--Button to close modal-->
-<div>
-<a class="close">X</a>
-</div>
-<!-- Button to close the modal END-->
-<form ng-submit="login.login()">
-  <input type="text" ng-model="login.username" placeholder="username"/>
-  <input type="password" ng-model="login.password" placeholder="password"/>
-  <input ng-click="login.login()" type="submit"/>
-</form>
-<p>Logged in username: {{ ctrl.user.username }} </p>
-
-<h4 ng-click="ctrl.getUsers()">click to see users</h4>
-<div>{{ctrl.error}}</div>
-<div ng-repeat="user in ctrl.users">
-  <h1>{{user.username}}</h1>
-</div>
+<!--LOGIN MODAL-->
+<section id="login-modal" class="modal">
+  <section class="modal-input-box">
+    <!--Button to close modal-->
+    <div>
+      <a class="close">X</a>
+    </div>
+    <!-- Button to close the modal END-->
+    <form ng-submit="ctrl.login(user)">
+      <div class="legend-container">
+        <legend><h2>Login</h2></legend>
+      </div>
+      <label for="username">Username:</label>
+      <input class="username" type="text" ng-model="user.username" placeholder="username"/><br/>
+      <label for="password">Password:</label>
+      <input class="password" type="password" ng-model="user.password" placeholder="password" required min-length="8"/><br/>
+      <input class="login-btn" ng-click="user.login()" type="submit"/>
+    </form>
+    <p>Welcome: {{ ctrl.user.username }} </p>
+    <p>{{ctrl.error}}</p>
+    <!-- removed ng repeat for user -->
+  </section>
+</section>
+<!--END LOGIN MODAL-->

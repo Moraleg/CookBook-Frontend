@@ -7,10 +7,11 @@ var app = angular.module('cookbook_app', []);
 
 
     //set variables for usage in functions
-    this.url = "https://hungry-for-more.herokuapp.com" ||
-    "http://localhost:3000";
+    this.url = "http://localhost:3000";
+    // this.url = "https://hungry-for-more.herokuapp.com" ||
+    // "http://localhost:3000";
 
-    //empty user object to get form data
+    // empty user object to get form data
     this.user = {};
     //form data for recipes
     this.recipeFormdData = {};
@@ -244,8 +245,8 @@ var app = angular.module('cookbook_app', []);
 
   //========RECIPE DELETE========//
 
-  // this.deleteRecipe = function(id) {
-  //   console.log('delete clicked');
+  this.deleteRecipe = function() {
+    console.log('delete clicked');
   //   console.log(id);
   //   $http({
   //     method: 'DELETE',
@@ -264,7 +265,7 @@ var app = angular.module('cookbook_app', []);
   //       this.recipe = response.data;
   //       this.editable = false;
   //       this.seeRecipe = true;
-  //     }
+      };
   //   }.bind(this));
   // // };
 
@@ -301,6 +302,7 @@ var app = angular.module('cookbook_app', []);
     });
 
     $('.close').on('click', function() {
+        console.log("close clicked");
       $('#login-modal').css('display', 'none');
     });
 
