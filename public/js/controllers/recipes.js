@@ -10,6 +10,7 @@ var app = angular.module('cookbook_app', []);
     this.url = "https://hungry-for-more.herokuapp.com" ||
     "http://localhost:3000";
 
+
     //empty user object to get form data
     this.user = {};
     //form data for recipes
@@ -45,6 +46,7 @@ var app = angular.module('cookbook_app', []);
           this.error = "Please try again, the username may be taken or you have not filled these fields.";
         } else {
           this.user = response.data.user;
+           $('#signup-modal').hide();
         }
       }.bind(this));
     };
@@ -75,6 +77,7 @@ var app = angular.module('cookbook_app', []);
           //toggle for token validation to make certain parts of the page show and not show with ngs
           this.token = true;
           this.index = true;
+          $('#login-modal').hide();
         }
       }.bind(this));
     };
@@ -113,6 +116,7 @@ var app = angular.module('cookbook_app', []);
         } else {
           this.getUser(response.data.id);
           this.user = response.data;
+          $('#edit-user-modal').hide();
         }
       }.bind(this));
     };
@@ -154,6 +158,7 @@ var app = angular.module('cookbook_app', []);
           this.error = "Unauthorized";
         } else {
           this.logout();
+          location.reload();
         }
       }.bind(this));
     };
@@ -181,6 +186,7 @@ var app = angular.module('cookbook_app', []);
         this.recipe = response.data.recipe;
         this.recipeFormData = {};
         this.getRecipes();
+         $('#create-recipe').hide();
         }
       }.bind(this));
     };
@@ -237,6 +243,7 @@ var app = angular.module('cookbook_app', []);
         this.recipe = response.data;
         this.editable = false;
         this.seeRecipe = true;
+        // $('#open-edit').hide();
       }
     }.bind(this));
   }; //end update data
